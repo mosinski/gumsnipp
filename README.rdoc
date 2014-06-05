@@ -1,0 +1,26 @@
+= Gumsnipp
+
+Design elements, playground and code snippets for Gumby HTML/CSS/JS framework 
+
+Homepage:: soon..
+
+== Dependencies
+
+* Ruby 2.1.1p76
+* Rails 4.1.1
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+## Resources
+
+* [Gumby Docs](http://gumbyframework.com/docs/)
+
+== License
+
+License:: Copyright (c) 2014 Miłosz Osiński, released under the MIT license
