@@ -1,0 +1,43 @@
+@font-face {
+  font: {
+    family: 'entypo';
+    weight: 400;
+    style: 'normal';
+  }
+  src: asset-url('entypo.eot');
+  src: asset-url('entypo.eot?#iefix') format('ie9-skip-eot'),
+  asset-url('entypo.woff') format('woff'),
+  asset-url('entypo.ttf') format('truetype');
+}
+@font-face {
+  font: {
+    family: 'Open Sans';
+    weight: 300;
+    style: 'normal';
+  }
+  src: asset-url('OpenSans-Light.ttf') format('truetype');
+}
+@font-face {
+  font: {
+    family: 'Open Sans';
+    weight: 400;
+    style: 'normal';
+  }
+  src: asset-url('OpenSans-Regular.ttf') format('truetype');
+}
+@font-face {
+  font: {
+    family: 'Open Sans';
+    weight: 600;
+    style: 'normal';
+  }
+  src: asset-url('OpenSans-Semibold.ttf') format('truetype');
+}
+@font-face {
+  font: {
+    family: 'Open Sans';
+    weight: 700;
+    style: 'normal';
+  }
+  src: asset-url('OpenSans-Bold.ttf') format('truetype');
+}
