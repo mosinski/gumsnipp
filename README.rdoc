@@ -1,6 +1,6 @@
 = Gumsnipp
 
-Design elements, playground and code snippets for Gumby HTML/CSS/JS framework 
+Design elements, playground and code snippets for Gumby HTML/CSS/JS framework
 
 Homepage:: soon..
 
@@ -9,7 +9,7 @@ Homepage:: soon..
 * Ruby 2.1.1p76
 * Rails 4.1.1
 
-## Contributing
+== Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -17,7 +17,7 @@ Homepage:: soon..
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-## Resources
+== Resources
 
 * [Gumby Docs](http://gumbyframework.com/docs/)
 
