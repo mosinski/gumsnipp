@@ -8,6 +8,8 @@ module Gumsnipp
   class Application < Rails::Application
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.precompile += %w( .svg .eot .woff .ttf )
+    config.assets.version = '1.0'
+    config.assets.enabled = true
     config.time_zone = 'Warsaw'
     config.encoding = "utf-8"
   end
