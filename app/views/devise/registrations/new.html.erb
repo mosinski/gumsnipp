@@ -1,18 +1,37 @@
-<h2>Sign up</h2>
+<style>
+body {
+  background-image: url('http://subtlepatterns.com/patterns/sativa.png');
+}
+footer {
+  position:absolute;
+  bottom:0px;
+}
+</style>
+<div class="centered six columns">
+  <h2>Register now to create and fork snippets</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <ul>
+      <li class="prepend field">
+        <span class="adjoined"><i class="icon-mail"></i></span>
+        <%= f.email_field :email, autofocus: true, class: "xwide text input", placeholder: "Email" %>
+      </li>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+      <li class="prepend field">
+        <span class="adjoined"><i class="icon-key"></i></span>
+        <%= f.password_field :password, autocomplete: "off", class: "xwide text input", placeholder: "Password" %>
+      </li>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+      <li class="prepend field">
+        <span class="adjoined"><i class="icon-key"></i></span>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "xwide text input", placeholder: "Password Confirmation" %>
+      </li>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+      <li class="field">
+        <div><%= f.submit "Sign up", class: "medium primary btn", style: "color:white" %></div>
+      </li>
+  <% end %>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
