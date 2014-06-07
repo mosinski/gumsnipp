@@ -1,0 +1,37 @@
+<%= form_for(@snipp) do |f| %>
+  <% if @snipp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@snipp.errors.count, "error") %> prohibited this snipp from being saved:</h2>
+
+      <ul>
+      <% @snipp.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "input" %>
+  </div>
+  <div class="field">
+    <%= f.label :html_code %><br>
+    <%= f.text_area :html_code, class: "input textarea" %>
+  </div>
+  <div class="field">
+    <%= f.label :css_code %><br>
+    <%= f.text_area :css_code, class: "input textarea" %>
+  </div>
+  <div class="field">
+    <%= f.label :js_code %><br>
+    <%= f.text_area :js_code, class: "input textarea" %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id, class: "input" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

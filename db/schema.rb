@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140606224048) do
+ActiveRecord::Schema.define(version: 20140607213054) do
+
+  create_table "snipps", force: true do |t|
+    t.string   "title"
+    t.text     "html_code"
+    t.text     "css_code"
+    t.text     "js_code"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -1,0 +1,29 @@
+<style>
+  <%= @snipp.css_code %>
+</style>
+<p id="notice"><%= notice %></p>
+
+<section class="pill tabs">
+  <h4 class="lead"><%= @snipp.title %></h4>
+  <ul class="tab-nav">
+      <li class="active two columns"><a href="http://localhost:3000/ui#">Preview</a></li>
+      <li class="two columns"><a href="#">HTML</a></li>
+      <li class="two columns"><a href="#">CSS</a></li>
+      <li class="two columns"><a href="#">JS</a></li>
+  </ul>
+  <div class="tab-content active">
+    <%= raw(@snipp.html_code) %>
+  </div>
+  <div class="tab-content">
+    <%= simple_format h @snipp.html_code %>
+  </div>
+  <div class="tab-content">
+    <%= simple_format h @snipp.css_code %>
+  </div>
+  <div class="tab-content">
+    <%= simple_format h @snipp.js_code %>
+  </div>
+</section>
+
+<%= link_to 'Edit', edit_snipp_path(@snipp) %> |
+<%= link_to 'Back', snipps_path %>

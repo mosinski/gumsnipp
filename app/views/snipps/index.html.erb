@@ -1,0 +1,33 @@
+<h1>Listing snipps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Html code</th>
+      <th>Css code</th>
+      <th>Js code</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @snipps.each do |snipp| %>
+      <tr>
+        <td><%= snipp.title %></td>
+        <td><%= snipp.html_code %></td>
+        <td><%= snipp.css_code %></td>
+        <td><%= snipp.js_code %></td>
+        <td><%= snipp.user_id %></td>
+        <td><%= link_to 'Show', snipp %></td>
+        <td><%= link_to 'Edit', edit_snipp_path(snipp) %></td>
+        <td><%= link_to 'Destroy', snipp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Snipp', new_snipp_path %>

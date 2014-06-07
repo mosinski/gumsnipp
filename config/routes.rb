@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :snipps
+
   devise_for :users
-  root to: 'static#ui'
+  get '/ui' => 'static#ui'
+  root to: 'static#start'
 end
