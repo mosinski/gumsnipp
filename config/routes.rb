@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :snipps
+  resources :snipps do
+    get 'subscreens', :on => :collection
+  end
 
   devise_for :users
   get '/ui' => 'static#ui'
-  root to: 'static#start'
+  root to: 'snipps#index'
 end

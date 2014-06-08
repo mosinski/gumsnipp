@@ -1,18 +1,24 @@
-<style>
-  <%= @snipp.css_code %>
-</style>
 <p id="notice"><%= notice %></p>
 
 <section class="pill tabs">
   <h4 class="lead"><%= @snipp.title %></h4>
-  <ul class="tab-nav">
-      <li class="active two columns"><a href="http://localhost:3000/ui#">Preview</a></li>
-      <li class="two columns"><a href="#">HTML</a></li>
-      <li class="two columns"><a href="#">CSS</a></li>
-      <li class="two columns"><a href="#">JS</a></li>
+  <ul class="tab-nav" style="width:250px;">
+      <li class="active primary label"><a>Preview</a></li>
+      <% if @snipp.html_code.present? %>
+        <li class="primary label"><a>HTML</a></li>
+      <% end %>
+
+      <% if @snipp.css_code.present? %>
+        <li class="primary label"><a>CSS</a></li>
+      <% end %>
+
+      <% if @snipp.js_code.present? %>
+        <li class="primary label"><a>JS</a></li>
+      <% end %>
   </ul>
   <div class="tab-content active">
-    <%= raw(@snipp.html_code) %>
+    <iframe src="<%= url_for :action => :subscreens %>" scrollbars="auto"
+    name="subscreens" width=90%></iframe>
   </div>
   <div class="tab-content">
     <%= simple_format h @snipp.html_code %>
