@@ -11,27 +11,32 @@
     </div>
   <% end %>
 
+<section class="pill tabs">
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, class: "input" %>
+    <h4 class="lead"><%= f.text_field :title, placeholder: 'Title', class: "input xxwide" %></h4>
   </div>
-  <div class="field">
-    <%= f.label :html_code %><br>
-    <%= f.text_area :html_code, class: "input textarea" %>
+  <ul class="tab-nav">
+    <li class="active primary label"><a><%= f.label :html_code %></a></li>
+    <li class="primary label"><a><%= f.label :css_code %></a></li>
+    <li class="primary label"><a><%= f.label :js_code %></a></li>
+  </ul>
+  <div class="tab-content active">
+    <div class="field">
+      <%= f.text_area :html_code, class: "input textarea xxwide" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :css_code %><br>
-    <%= f.text_area :css_code, class: "input textarea" %>
+  <div class="tab-content">
+    <div class="field">
+      <%= f.text_area :css_code, class: "input textarea xxwide" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :js_code %><br>
-    <%= f.text_area :js_code, class: "input textarea" %>
+  <div class="tab-content">
+    <div class="field">
+      <%= f.text_area :js_code, class: "input textarea xxwide" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id, class: "input" %>
-  </div>
+</section>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "medium primary btn" %>
   </div>
 <% end %>

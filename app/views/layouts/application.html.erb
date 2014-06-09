@@ -49,7 +49,8 @@
       </li>
       <li class="field"><input class="search input" type="search" placeholder="Search" /></li>
       <% if current_user %>
-        <li>Witaj <b><%= current_user.email %></b>! <%= link_to "Wyloguj", destroy_user_session_path, :method => :delete if current_user %></li>
+        <li><%= link_to current_user.email, edit_user_registration_path %></li>
+        <li><%= link_to "Wyloguj", destroy_user_session_path, :method => :delete if current_user %></li>
       <% else %>
         <li><%= link_to 'Rejestracja', new_user_registration_path %></li>
         <li><%= link_to 'Logowanie', new_user_session_path %></li>
