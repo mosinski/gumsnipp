@@ -1,4 +1,6 @@
 class Snipp < ActiveRecord::Base
+  belongs_to :user
+
   def slug
     title.downcase.gsub(" ", "-")
   end

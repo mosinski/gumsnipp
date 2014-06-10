@@ -2,6 +2,7 @@
 
 <section class="pill tabs">
   <h4 class="lead"><%= @snipp.title %></h4>
+  <h5>Snipp by <%= @snipp.user.email %></h5>
   <ul class="tab-nav" style="width:250px;">
       <li class="active primary label"><a>Preview</a></li>
       <% if @snipp.html_code.present? %>
