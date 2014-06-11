@@ -1,6 +1,6 @@
 class SnippsController < ApplicationController
   before_action :set_snipp, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :only => [:edit, :update, :destroy]
+  before_action :authenticate_user!, :only => [:new, :edit, :update, :destroy]
 
   def index
     @snipps = Snipp.all
@@ -52,7 +52,7 @@ class SnippsController < ApplicationController
   end
 
   def subscreens
-    @snipp = Snipp.last
+    @snipp = Snipp.find(params[:id])
     render :partial => 'snipp', :layout => false
   end
 

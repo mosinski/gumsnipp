@@ -1,8 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <section class="pill tabs">
-  <h4 class="lead"><%= @snipp.title %></h4>
-  <h5>Snipp by <%= @snipp.user.email %></h5>
+  <div class="title-bar shaded">
+    <h4 class="lead"><%= @snipp.title %></h4>
+    <h5>Snipp by <%= @snipp.user.email %></h5>
+  </div>
+
+  <br />
+
+  <div class="medium pill-left primary btn" style="float:right">
+    <a href="<%= url_for action: :subscreens, id: @snipp.id %>" target="_blank">
+      <i class="icon-resize-full"></i>
+    </a>
+  </div>
+
   <ul class="tab-nav" style="width:250px;">
       <li class="active primary label"><a>Preview</a></li>
       <% if @snipp.html_code.present? %>
@@ -17,16 +28,19 @@
         <li class="primary label"><a>JS</a></li>
       <% end %>
   </ul>
+
   <div class="tab-content active">
-    <iframe src="<%= url_for :action => :subscreens %>" scrollbars="auto"
-    name="subscreens" width=90%></iframe>
+    <iframe src="<%= url_for action: :subscreens, id: @snipp.id %>" scrollbars="auto" name="subscreens" width=100%></iframe>
   </div>
+
   <div class="tab-content">
     <%= simple_format h @snipp.html_code %>
   </div>
+
   <div class="tab-content">
     <%= simple_format h @snipp.css_code %>
   </div>
+
   <div class="tab-content">
     <%= simple_format h @snipp.js_code %>
   </div>
