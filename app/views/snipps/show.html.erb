@@ -34,15 +34,15 @@
   </div>
 
   <div class="tab-content">
-    <%= simple_format h @snipp.html_code %>
+    <code lang="html"><%= raw (textilize(@snipp.html_code)).gsub(/\<br\s*\/?\>/, "") %></code>
   </div>
 
   <div class="tab-content">
-    <%= simple_format h @snipp.css_code %>
+    <code><%= raw (textilize(@snipp.css_code)).gsub(/\<br\s*\/?\>/, "") %></code>
   </div>
 
   <div class="tab-content">
-    <%= simple_format h @snipp.js_code %>
+    <code><%= raw (textilize(@snipp.js_code)).gsub(/\<br\s*\/?\>/, "") %></code>
   </div>
 </section>
 
