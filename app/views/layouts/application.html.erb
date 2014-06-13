@@ -7,57 +7,56 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body <%= yield :turbolinks %>>
 
-<div class="navbar" id="nav1">
-  <div class="row">
-    <a class="toggle" gumby-trigger="#nav1 > .row > ul" href="#"><i class="icon-menu"></i></a>
-    <h1 class="four columns logo">
-      <a href="/">
-        <%= image_tag('gumby_mainlogo.png', "gumby-retina" => "") %>
-      </a>
-    </h1>
-    <ul class="eight columns">
-      <li>
-        <a href="/"><span>Features </span><i class="icon-archive" title="Features"></i></a>
-        <div class="dropdown">
-          <ul>
-            <li><a href="/features/">The Grid</a></li>
-            <li><a href="/features/ui-kit/">UI Kit</a></li>
-            <li><a href="/features/toggles-switches/">Toggles &amp; Switches</a></li>
-            <li><a href="/features/fancy-tiles/">Fancy Tiles</a></li>
-            <li><a href="/features/shuffle/">Shuffle</a></li>
-            <li><a href="/features/responsive-images/">Responsive Images</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="field"><input class="search input" type="search" placeholder="Search" /></li>
-      <% if current_user %>
-        <li><%= link_to current_user.email, edit_user_registration_path %></li>
-        <li><%= link_to "Wyloguj", destroy_user_session_path, :method => :delete if current_user %></li>
-      <% else %>
-        <li><%= link_to 'Rejestracja', new_user_registration_path %></li>
-        <li><%= link_to 'Logowanie', new_user_session_path %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<div class="row">
-  <div class="twelve columns">
-    <%= yield %>
-  </div>
-</div>
-
-<footer>
-  <div class="row">
-    <div class="twelve columns">
-      <div class="four columns">
-        Gumsnipp.com by Miłosz Osiński
-      </div>
+<body>
+  <div class="navbar" id="nav1">
+    <div class="row">
+      <a class="toggle" gumby-trigger="#nav1 > .row > ul" href="#"><i class="icon-menu"></i></a>
+      <h1 class="four columns logo">
+        <a href="/">
+          <%= image_tag('gumby_mainlogo.png', "gumby-retina" => "") %>
+        </a>
+      </h1>
+      <ul class="eight columns">
+        <li>
+          <a href="/"><span>Features </span><i class="icon-archive" title="Features"></i></a>
+          <div class="dropdown">
+            <ul>
+              <li><a href="/features/">The Grid</a></li>
+              <li><a href="/features/ui-kit/">UI Kit</a></li>
+              <li><a href="/features/toggles-switches/">Toggles &amp; Switches</a></li>
+              <li><a href="/features/fancy-tiles/">Fancy Tiles</a></li>
+              <li><a href="/features/shuffle/">Shuffle</a></li>
+              <li><a href="/features/responsive-images/">Responsive Images</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="field"><input class="search input" type="search" placeholder="Search" /></li>
+        <% if current_user %>
+          <li><%= link_to current_user.email, edit_user_registration_path %></li>
+          <li><%= link_to "Wyloguj", destroy_user_session_path, :method => :delete if current_user %></li>
+        <% else %>
+          <li><%= link_to 'Rejestracja', new_user_registration_path %></li>
+          <li><%= link_to 'Logowanie', new_user_session_path %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
-</footer>
 
+  <div class="row">
+    <div class="twelve columns">
+      <%= yield %>
+    </div>
+  </div>
+
+  <footer>
+    <div class="row">
+      <div class="twelve columns">
+        <div class="four columns">
+          Gumsnipp.com by Miłosz Osiński
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
