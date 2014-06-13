@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140607213054) do
+ActiveRecord::Schema.define(version: 20140613190946) do
 
   create_table "snipps", force: true do |t|
     t.string   "title"
@@ -40,5 +40,27 @@ ActiveRecord::Schema.define(version: 20140607213054) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "visit_details", force: true do |t|
+    t.integer  "visit_id"
+    t.string   "ip_address", limit: 15
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "visit_details", ["ip_address"], name: "index_visit_details_on_ip_address"
+  add_index "visit_details", ["visit_id"], name: "index_visit_details_on_visit_id"
+
+  create_table "visits", force: true do |t|
+    t.integer  "visitable_id"
+    t.string   "visitable_type", limit: 30
+    t.integer  "total_visits"
+    t.integer  "unique_visits"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "visits", ["visitable_id"], name: "index_visits_on_visitable_id"
+  add_index "visits", ["visitable_type"], name: "index_visits_on_visitable_type"
 
 end
