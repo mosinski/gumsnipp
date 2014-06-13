@@ -2,7 +2,7 @@
 
 Design elements, playground and code snippets for Gumby HTML/CSS/JS framework
 
-Homepage:: soon..
+Homepage:: http://gumsnipp.com
 
 == Dependencies
 
@@ -17,9 +17,11 @@ Homepage:: soon..
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-== Resources
+== Tests
+Coverage: 23 / 57 LOC (40.35%) covered
+   rake db:test:prepare
+   bundle exec rspec
 
-* [Gumby Docs](http://gumbyframework.com/docs/)
 
 == License
 
