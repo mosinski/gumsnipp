@@ -12,7 +12,7 @@
   <br />
 
   <div class="light label"><i class="icon-eye"></i><%= @snipp.visits_count %> Views</div>
-  <div class="light label"><i class="icon-comment"></i>Comments</div>
+  <div class="light label" onclick="location.href='#disqus_thread'"><i class="icon-comment"></i>Comments</div>
   <div style="float:right"><i class="icon-tag"></i>Tags:</div>
 
   <br />
@@ -55,6 +55,10 @@
     <code><%= raw (textilize(@snipp.js_code)).gsub(/\<br\s*\/?\>/, "") %></code>
   </div>
 </section>
+
+<div id ="disqus_thread">
+  <%= raw disqus_thread %>
+</div>
 
 <%= link_to 'Edit', edit_snipp_path(@snipp) %> |
 <%= link_to 'Back', snipps_path %>

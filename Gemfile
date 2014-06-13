@@ -19,3 +19,4 @@ gem 'rspec-rails', group: :test
 gem 'capybara', group: :test
 gem 'coderay'
 gem 'RedCloth'
+gem 'disqus'
