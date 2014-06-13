@@ -5,7 +5,7 @@
       <% snipps.each do |snipp| %>
         <div class="four columns" style="padding: 0px 5px 2px 5px">
           <h5><%= link_to snipp.title, snipp %></h5>
-          <img src="http://immediatenet.com/t/m?Size=1024x768&URL=<%= path_for action: :subscreens, id: snipp.id %>">
+          <img src="http://immediatenet.com/t/m?Size=1024x768&URL=<%= url_for action: :subscreens, id: snipp.id, only_path: false  %>">
           <div class="field">
             <div class="medium primary btn xxwide" style="width:100%"><%= link_to "View", snipp %></div>
           </div>
