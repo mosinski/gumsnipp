@@ -1,32 +1,19 @@
 <h1>Listing snipps</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Html code</th>
-      <th>Css code</th>
-      <th>Js code</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @snipps.each do |snipp| %>
-      <tr>
-        <td><%= snipp.title %></td>
-        <td><%= snipp.html_code %></td>
-        <td><%= snipp.css_code %></td>
-        <td><%= snipp.js_code %></td>
-        <td><%= snipp.user_id %></td>
-        <td><%= link_to 'Show', snipp %></td>
-        <td><%= link_to 'Edit', edit_snipp_path(snipp) %></td>
-        <td><%= link_to 'Destroy', snipp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @snipps.each_slice(3) do |snipps| %>
+    <div class="row">
+      <% snipps.each do |snipp| %>
+        <div class="four columns" style="padding: 0px 5px 2px 5px">
+          <h5><%= link_to snipp.title, snipp %></h5>
+          <img src="http://immediatenet.com/t/m?Size=1024x768&URL=<%= url_for action: :subscreens, id: snipp.id %>">
+          <div class="field">
+            <div class="medium primary btn xxwide" style="width:100%"><%= link_to "View", snipp %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <br />
+  <% end %>
 
 <br>
 
