@@ -16,6 +16,7 @@ gem 'spring', group: :development
 gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'rspec-rails', group: :test
+gem 'simplecov'
 gem 'capybara', group: :test
 gem 'coderay'
 gem 'RedCloth'
