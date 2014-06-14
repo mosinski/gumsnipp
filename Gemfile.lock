@@ -28,6 +28,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.2.6)
+      activerecord (>= 3, < 5)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
     builder (3.2.2)
@@ -128,6 +130,8 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    select2-rails (3.5.7)
+      thor (~> 0.14)
     simplecov (0.8.2)
       docile (~> 1.1.0)
       multi_json
@@ -167,6 +171,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
+  acts-as-taggable-on
   capybara
   coderay
   coffee-rails (~> 4.0.0)
@@ -181,6 +186,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  select2-rails
   simplecov
   spring
   sqlite3

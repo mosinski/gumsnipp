@@ -16,9 +16,11 @@ class SnippsController < ApplicationController
 
   def new
     @snipp = Snipp.new
+    @tags_list = TagsHelper.get_tags
   end
 
   def edit
+    @tags_list = TagsHelper.get_tags
   end
 
   def create
@@ -67,6 +69,6 @@ class SnippsController < ApplicationController
     end
 
     def snipp_params
-      params.require(:snipp).permit(:title, :html_code, :css_code, :js_code, :user_id)
+      params.require(:snipp).permit(:title, :html_code, :css_code, :js_code, :user_id, tag_list: [])
     end
 end

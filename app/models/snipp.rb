@@ -1,6 +1,8 @@
 class Snipp < ActiveRecord::Base
   belongs_to :user
   has_one :visit, :as => :visitable
+  acts_as_taggable
+  acts_as_taggable_on :tags
 
   def slug
     title.downcase.gsub(" ", "-")
