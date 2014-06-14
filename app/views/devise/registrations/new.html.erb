@@ -14,6 +14,11 @@ footer {
     <%= devise_error_messages! %>
     <ul>
       <li class="prepend field">
+        <span class="adjoined"><i class="icon-user"></i></span>
+        <%= f.text_field :nickname, autofocus: true, class: "xwide text input", placeholder: "Nickname" %>
+      </li>
+
+      <li class="prepend field">
         <span class="adjoined"><i class="icon-mail"></i></span>
         <%= f.email_field :email, autofocus: true, class: "xwide text input", placeholder: "Email" %>
       </li>

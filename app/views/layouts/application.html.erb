@@ -33,7 +33,7 @@
         </li>
         <li class="field"><input class="search input" type="search" placeholder="Search" /></li>
         <% if current_user %>
-          <li><%= link_to current_user.email, edit_user_registration_path %></li>
+          <li><%= link_to current_user.nickname, edit_user_registration_path %></li>
           <li><%= link_to "Wyloguj", destroy_user_session_path, :method => :delete if current_user %></li>
         <% else %>
           <li><%= link_to 'Rejestracja', new_user_registration_path %></li>
