@@ -25,7 +25,7 @@ class Snipp < ActiveRecord::Base
     order('title').where('title LIKE ?', "%#{search}%").paginate(page: page, per_page: 9)
   end
 
-  def owner? user
+  def owner?(user)
     self.user_id == user.id
   end
 end
