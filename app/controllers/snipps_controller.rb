@@ -1,6 +1,7 @@
 class SnippsController < ApplicationController
   before_action :set_snipp, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, :only => [:new, :edit, :update, :destroy]
+  before_action :authorize, :only => [:edit, :update, :destroy]
 
   def index
     if params[:tag]
@@ -33,7 +34,7 @@ class SnippsController < ApplicationController
 
     respond_to do |format|
       if @snipp.save
-        format.html { redirect_to @snipp, notice: 'Snipp was successfully created.' }
+        format.html { redirect_to @snipp, flash: { success: 'Snipp was successfully created.' } }
         format.json { render :show, status: :created, location: @snipp }
       else
         format.html { render :new }
@@ -45,7 +46,7 @@ class SnippsController < ApplicationController
   def update
     respond_to do |format|
       if @snipp.update(snipp_params)
-        format.html { redirect_to @snipp, notice: 'Snipp was successfully updated.' }
+        format.html { redirect_to @snipp, flash: { notice: 'Snipp was successfully updated.' } }
         format.json { render :show, status: :ok, location: @snipp }
       else
         format.html { render :edit }
@@ -74,5 +75,10 @@ class SnippsController < ApplicationController
 
     def snipp_params
       params.require(:snipp).permit(:title, :html_code, :css_code, :js_code, :user_id, tag_list: [])
+    end
+    def authorize
+      unless @snipp.owner?(current_user)
+        redirect_to root_url, flash: { alert: "Unauthorize" }
+      end
     end
 end
