@@ -18,11 +18,13 @@
         </a>
       </h1>
       <ul class="nine columns">
-        <li>
-          <p class="medium pretty default btn icon-plus-squared icon-left">
-            <%= link_to 'Snipp', new_snipp_path %>
-          </p>
-        </li>
+        <% if current_user %>
+          <li>
+            <p class="medium pretty default btn icon-plus-squared icon-left">
+              <%= link_to 'Snipp', new_snipp_path %>
+            </p>
+          </li>
+        <% end %>
         <li><a href="/"><i class="icon-home" title="Home"></i>Home</a></li>
         <li>
           <a href="/"><span><i class="icon-archive"></i>Snipps<i class="icon-down-open-mini"></i></span></a>
