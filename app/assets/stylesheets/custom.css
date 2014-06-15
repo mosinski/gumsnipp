@@ -13,3 +13,8 @@
   border-radius: 6px;
 }
 .name { display:inline-block; }
+form#searchform { height:30px }
+form#searchform .submit_button {
+  margin-left: -32px;
+  border-radius: 0px 20px 20px 0px;
+}

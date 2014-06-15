@@ -20,4 +20,7 @@ class Snipp < ActiveRecord::Base
       0
     end
   end
+  def self.search(search, page)
+    order('title').where('title LIKE ?', "%#{search}%").paginate(page: page, per_page: 9)
+  end
 end

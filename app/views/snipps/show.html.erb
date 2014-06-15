@@ -15,9 +15,7 @@
   <div class="light label" onclick="location.href='#disqus_thread'"><i class="icon-comment"></i>Comments</div>
   <div style="float:right">
     <i class="icon-tag"></i>Tags:
-    <% @snipp.tag_list.each do |tag| %>
-      <div class="primary label"><%= tag %></div>
-    <% end %>
+    <%= raw @snipp.tag_list.map { |t| link_to t, tag_path(t), class: "primary label" }.join(' ') %>
   </div>
 
   <br />

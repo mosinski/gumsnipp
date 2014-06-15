@@ -3,7 +3,11 @@ class SnippsController < ApplicationController
   before_action :authenticate_user!, :only => [:new, :edit, :update, :destroy]
 
   def index
-    @snipps = Snipp.all
+    if params[:tag]
+      @snipps = Snipp.tagged_with(params[:tag])
+    else
+      @snipps = Snipp.search(params[:search], params[:page])
+    end
   end
 
   def show

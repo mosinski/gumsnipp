@@ -12,32 +12,39 @@
   <div class="navbar" id="nav1">
     <div class="row">
       <a class="toggle" gumby-trigger="#nav1 > .row > ul" href="#"><i class="icon-menu"></i></a>
-      <h1 class="four columns logo">
+      <h1 class="tree columns logo">
         <a href="/">
           <%= image_tag('gumby_mainlogo.png', "gumby-retina" => "") %>
         </a>
       </h1>
-      <ul class="eight columns">
+      <ul class="nine columns">
         <li>
-          <a href="/"><span>Features </span><i class="icon-archive" title="Features"></i></a>
+          <p class="medium pretty default btn icon-plus-squared icon-left">
+            <%= link_to 'Snipp', new_snipp_path %>
+          </p>
+        </li>
+        <li><a href="/"><i class="icon-home" title="Home"></i>Home</a></li>
+        <li>
+          <a href="/"><span><i class="icon-archive"></i>Snipps<i class="icon-down-open-mini"></i></span></a>
           <div class="dropdown">
             <ul>
-              <li><a href="/features/">The Grid</a></li>
-              <li><a href="/features/ui-kit/">UI Kit</a></li>
-              <li><a href="/features/toggles-switches/">Toggles &amp; Switches</a></li>
-              <li><a href="/features/fancy-tiles/">Fancy Tiles</a></li>
-              <li><a href="/features/shuffle/">Shuffle</a></li>
-              <li><a href="/features/responsive-images/">Responsive Images</a></li>
+              <li><a href="/tags"><i class="icon-tag"></i>Tags</a></li>
+              <li><a href="/ui"><i class="icon-window"></i>UI Kit</a></li>
             </ul>
           </div>
         </li>
-        <li class="field"><input class="search input" type="search" placeholder="Search" /></li>
+        <li class="append field">
+          <%= form_tag request.path, :method => 'get', :id => "searchform" do %>
+            <%= text_field_tag  :search, params[:search], :placeholder => 'Search', :class => 'search input', :id => 's' %>
+            <div class="medium default btn submit_button", onclick="document.getElementById('searchform').submit()"><i class="icon-search"></i></div>
+          <% end %>
+        </li>
         <% if current_user %>
-          <li><%= link_to current_user.nickname, edit_user_registration_path %></li>
-          <li><%= link_to "Wyloguj", destroy_user_session_path, :method => :delete if current_user %></li>
+          <li><%= link_to current_user.nickname.first(10), edit_user_registration_path %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, :method => :delete if current_user %></li>
         <% else %>
-          <li><%= link_to 'Rejestracja', new_user_registration_path %></li>
-          <li><%= link_to 'Logowanie', new_user_session_path %></li>
+          <li><%= link_to 'Register', new_user_registration_path %></li>
+          <li><%= link_to 'Login', new_user_session_path %></li>
         <% end %>
       </ul>
     </div>
