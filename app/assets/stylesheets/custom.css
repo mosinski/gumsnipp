@@ -18,3 +18,7 @@ form#searchform .submit_button {
   margin-left: -32px;
   border-radius: 0px 20px 20px 0px;
 }
+.thumbnail {
+  border: 1px solid #DDD;
+  padding:0px 5px 2px 5px;
+}

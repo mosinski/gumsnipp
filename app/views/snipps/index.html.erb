@@ -1,7 +1,7 @@
 <% @snipps.each_slice(3) do |snipps| %>
   <div class="row">
     <% snipps.each do |snipp| %>
-      <div class="four columns" style="padding:0px 5px 2px 5px">
+      <div class="four columns thumbnail">
         <h5><%= link_to snipp.title, snipp %><span style="float:right" class="ttip" data-tooltip="Viewed"><%= snipp.visits_count %><i class="icon-eye"></i></span></h5>
         <img src="http://immediatenet.com/t/fs?Size=800x600&URL=<%= url_for action: :subscreens, id: snipp.id, only_path: false %>" alt="Snipp Screenshot">
         <div class="field" style="margin-top:-23px">
@@ -13,4 +13,4 @@
   <br>
 <% end %>
 
-<%= will_paginate @snipps, :container => false %>
+<%= will_paginate @snipps %>
