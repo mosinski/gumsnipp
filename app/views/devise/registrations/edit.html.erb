@@ -37,12 +37,13 @@
 
   <h2>Cancel my account</h2>
 
-  <p>Unhappy? 
+  <p>Unhappy?
     <ul>
       <li class="field">
       <div><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "medium danger btn" %></div>
       </li>
     </ul>
+  </p>
 
   <%= link_to "Back", :back %>
 </div>

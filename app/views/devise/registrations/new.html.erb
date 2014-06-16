@@ -1,17 +1,14 @@
 <style>
 body {
   background-image: url('http://subtlepatterns.com/patterns/sativa.png');
-}
-footer {
-  position:absolute;
-  bottom:0px;
+  height:100%;
 }
 </style>
 <div class="centered six columns">
-  <h2>Register now to create and fork snippets</h2>
+  <h2>Register now to create snippets</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+    <%= render 'layouts/error_messages', object: resource %>
     <ul>
       <li class="prepend field">
         <span class="adjoined"><i class="icon-user"></i></span>

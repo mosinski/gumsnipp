@@ -1,44 +1,34 @@
 <%= form_for(@snipp) do |f| %>
-  <% if @snipp.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@snipp.errors.count, "error") %> prohibited this snipp from being saved:</h2>
+  <%= render 'layouts/error_messages', object: @snipp %>
 
-      <ul>
-      <% @snipp.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-<section class="pill tabs">
-  <div class="field">
-    <h4 class="lead"><%= f.text_field :title, placeholder: 'Title', :class => "input xxwide" %></h4>
-  </div>
-  <div class="field">
-    <%= f.select :tag_list, options_for_select(@tags_list, f.object.tag_list), {}, {multiple: true, class: "input", style: "width:50%" } %>
-  </div>
-  <ul class="tab-nav">
-    <li class="active primary label"><a><%= f.label :html_code %></a></li>
-    <li class="primary label"><a><%= f.label :css_code %></a></li>
-    <li class="primary label"><a><%= f.label :js_code %></a></li>
-  </ul>
-  <div class="tab-content active">
+  <section class="pill tabs">
     <div class="field">
-      <%= f.text_area :html_code, class: "input textarea xxwide" %>
+      <h4 class="lead"><%= f.text_field :title, placeholder: 'Title', :class => "input xxwide" %></h4>
     </div>
-  </div>
-  <div class="tab-content">
     <div class="field">
-      <%= f.text_area :css_code, class: "input textarea xxwide" %>
+      <%= f.select :tag_list, options_for_select(@tags_list, f.object.tag_list), {}, {multiple: true, class: "input", style: "width:50%" } %>
     </div>
-  </div>
-  <div class="tab-content">
-    <div class="field">
-      <%= f.text_area :js_code, class: "input textarea xxwide" %>
+    <ul class="tab-nav">
+      <li class="active primary label"><a><%= f.label :html_code %></a></li>
+      <li class="primary label"><a><%= f.label :css_code %></a></li>
+      <li class="primary label"><a><%= f.label :js_code %></a></li>
+    </ul>
+    <div class="tab-content active">
+      <div class="field">
+        <%= f.text_area :html_code, class: "input textarea xxwide" %>
+      </div>
     </div>
-  </div>
-</section>
+    <div class="tab-content">
+      <div class="field">
+        <%= f.text_area :css_code, class: "input textarea xxwide" %>
+      </div>
+    </div>
+    <div class="tab-content">
+      <div class="field">
+        <%= f.text_area :js_code, class: "input textarea xxwide" %>
+      </div>
+    </div>
+  </section>
   <div class="actions">
     <%= f.submit class: "medium primary btn" %>
   </div>

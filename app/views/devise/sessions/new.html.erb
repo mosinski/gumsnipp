@@ -2,10 +2,6 @@
 body {
   background-image: url('http://subtlepatterns.com/patterns/sativa.png');
 }
-footer {
-  position:absolute;
-  bottom:0px;
-}
 </style>
 <div class="row">
   <div class="centered six columns">
@@ -15,12 +11,12 @@ footer {
       <ul>
         <li class="prepend field">
           <span class="adjoined"><i class="icon-mail"></i></span>
-          <%= f.email_field :email, autofocus: true, class: "xwide text input", placeholder: "Email" %>
+          <%= f.email_field :email, autofocus: true, class: "xwide text input", placeholder: "Email", required: true %>
         </li>
 
         <li class="prepend field">
           <span class="adjoined"><i class="icon-key"></i></span>
-          <%= f.password_field :password, autocomplete: "off", class: "xwide text input", placeholder: "Password" %>
+          <%= f.password_field :password, autocomplete: "off", class: "xwide text input", placeholder: "Password", required: true %>
         </li>
 
         <li class="field">

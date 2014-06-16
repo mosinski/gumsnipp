@@ -1,12 +1,24 @@
-<h2>Forgot your password?</h2>
+<style>
+body {
+  background-image: url('http://subtlepatterns.com/patterns/sativa.png');
+}
+</style>
+<div class="centered six columns">
+  <h2>Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render 'layouts/error_messages', object: resource %>
+    <ul>
+      <li class="prepend field">
+        <span class="adjoined"><i class="icon-mail"></i></span>
+        <%= f.email_field :email, autofocus: true, class: "xwide text input", placeholder: "Email", required: true %>
+      </li>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+      <li class="field">
+        <%= f.submit "Send me reset password instructions", class: "medium primary btn", style: "color:white" %>
+      </li>
+    </ul>
+  <% end %>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
