@@ -1,5 +1,5 @@
 <div class="centered six columns">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h3>Account Settings</h3>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
@@ -9,7 +9,7 @@
     <ul>
       <li class="prepend field">
         <span class="adjoined"><i class="icon-mail"></i></span>
-        <%= f.email_field :email, autofocus: true, class: "xwide text input", placeholder: "Email" %>
+        <%= f.email_field :email, autofocus: true, class: "xwide text input", placeholder: "Email", readonly: true %>
       </li>
 
       <li class="prepend field">
@@ -35,7 +35,7 @@
     </ul>
   <% end %>
 
-  <h2>Cancel my account</h2>
+  <h3>Cancel my account</h3>
 
   <p>Unhappy?
     <ul>

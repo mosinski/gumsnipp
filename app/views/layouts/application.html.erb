@@ -28,7 +28,7 @@
           <% end %>
           <li><a href="/"><i class="icon-home" title="Home"></i>Home</a></li>
           <li>
-            <a href="/"><span><i class="icon-archive"></i>Snipps<i class="icon-down-open-mini"></i></span></a>
+            <a><span><i class="icon-archive"></i>Snipps<i class="icon-down-open-mini"></i></span></a>
             <div class="dropdown">
               <ul>
                 <li><a href="/tags"><i class="icon-tag"></i>Tags</a></li>
@@ -43,8 +43,15 @@
             <% end %>
           </li>
           <% if current_user %>
-            <li><%= link_to current_user.nickname.first(10), edit_user_registration_path %></li>
-            <li><%= link_to "Logout", destroy_user_session_path, :method => :delete if current_user %></li>
+            <li>
+              <a><span><%= image_tag(current_user.gravatar(24), size: "24", class: "avatar") %> Profile<i class="icon-down-open-mini"></i></span></a>
+              <div class="dropdown">
+                <ul>
+                  <li><%= link_to "Settings", edit_user_registration_path %></li>
+                  <li><%= link_to "Logout", destroy_user_session_path, :method => :delete if current_user %></li>
+                </ul>
+              </div>
+            </li>
           <% else %>
             <li><%= link_to 'Register', new_user_registration_path %></li>
             <li><%= link_to 'Login', new_user_session_path %></li>

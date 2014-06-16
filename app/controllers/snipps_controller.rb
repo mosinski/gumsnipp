@@ -68,6 +68,10 @@ class SnippsController < ApplicationController
     render :partial => 'snipp', :layout => false
   end
 
+  def tags
+    @tags = TagsHelper.get_tags
+  end
+
   private
     def set_snipp
       @snipp = Snipp.find(params[:id])

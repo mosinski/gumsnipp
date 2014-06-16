@@ -1,0 +1,3 @@
+<% @tags.to_a.each do |tag| %>
+  <div class="large primary btn"><%= link_to tag, tag_path(tag.to_s) %></div>
+<% end %>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   get '/ui' => 'static#ui'
+  get '/tags' => 'snipps#tags'
   get 'tags/:tag', to: 'snipps#index', as: :tag
   root to: 'snipps#index'
 end
