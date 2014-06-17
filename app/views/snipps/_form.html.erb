@@ -8,7 +8,7 @@
     <div class="field">
       <% puts  @tags.nil? %>
       <% puts f.object.tag_list %>
-      <%= f.select :tag_list, options_for_select(TagsHelper.get_tags, f.object.tag_list), {}, {multiple: true, class: "input", style: "width:50%" } %>
+      <%= f.select :tag_list, options_for_select(TagsHelper.get_tags, f.object.tag_list), {}, {multiple: true, class: "input", placeholder: "Tags..", style: "width:50%" } %>
     </div>
     <ul class="tab-nav">
       <li class="active primary label"><a><%= f.label :html_code %></a></li>
@@ -17,22 +17,22 @@
     </ul>
     <div class="tab-content active">
       <div class="field">
-        <%= f.text_area :html_code, class: "input textarea xxwide" %>
+        <%= f.text_area :html_code, class: "input textarea xxwide", placeholder: "Write here your html code" %>
       </div>
     </div>
     <div class="tab-content">
       <div class="field">
-        <%= f.text_area :css_code, class: "input textarea xxwide" %>
+        <%= f.text_area :css_code, class: "input textarea xxwide", placeholder: "Write here your css code" %>
       </div>
     </div>
     <div class="tab-content">
       <div class="field">
-        <%= f.text_area :js_code, class: "input textarea xxwide" %>
+        <%= f.text_area :js_code, class: "input textarea xxwide", placeholder: "Write here your js code" %>
       </div>
     </div>
   </section>
   <div class="actions">
-    <%= f.submit class: "medium primary btn" %>
+    <%= f.submit class: "medium success btn" %>
   </div>
 <% end %>
 
