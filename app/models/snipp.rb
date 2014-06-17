@@ -4,6 +4,16 @@ class Snipp < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :tags
 
+  validates :title, presence: true
+  validates :title, uniqueness: true
+  validates :html_code, presence: true
+  validate :maximum_amount_of_tags
+
+  def maximum_amount_of_tags
+    number_of_tags = tag_list_cache_on("tags").uniq.length
+    errors.add(:base, "Please only add 3 tags") if number_of_tags > 3
+  end
+
   def slug
     title.downcase.gsub(" ", "-")
   end

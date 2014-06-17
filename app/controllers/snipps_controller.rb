@@ -25,7 +25,6 @@ class SnippsController < ApplicationController
   end
 
   def edit
-    @tags_list = TagsHelper.get_tags
   end
 
   def create
