@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         ftp.storbinary("STOR " + file.original_filename, StringIO.new(file.read), Net::FTP::DEFAULT_BLOCKSIZE)
         ftp.quit()
         @user.avatar_url = "http://avatars.m1l05z.pl/#{file.original_filename}"
-        @user.save_without_session_maintenance
+        @user.save
         redirect_to root_url, flash: { success: "Your new avatar was uploaded successfully" }
       else
         redirect_to edit_user_registration_path, flash: { error: "Your avatar's file size is too large. Please upload an avatar no bigger than 50 KB" }
