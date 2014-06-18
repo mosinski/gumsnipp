@@ -44,7 +44,7 @@
           </li>
           <% if current_user %>
             <li>
-              <a><span><%= image_tag(current_user.gravatar(24), size: "24", class: "avatar") %> Profile<i class="icon-down-open-mini"></i></span></a>
+              <a><span><%= image_tag(current_user.avatar(24), size: "24", class: "avatar") %> Profile<i class="icon-down-open-mini"></i></span></a>
               <div class="dropdown">
                 <ul>
                   <li><%= link_to "Settings", edit_user_registration_path %></li>
