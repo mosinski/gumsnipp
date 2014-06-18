@@ -1,7 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+case Rails.env
+
+when "development"
+  puts "********Seeduje Dane na localhost************"
+  list_tags = ['user interface', 'admin interface', 'forms', 'buttons', 'table', 'tabs', 'lists', 'modal', 'gallery', 'thumbnails', 'alert', 'registration', 'login', 'menu', 'navbar', 'search', 'footer']
+
+  list_tags.each do |tag|
+      ActsAsTaggableOn::Tag.new(:name => tag).save
+  end
+  User.create(:nickname => "localAdministrator", :password => "password", :password_confirmation => "password", :email => "user@example.com")
+
+when "production"
+  puts "********Seeduje Dane na heroku************"
+  list_tags = ['user interface', 'admin interface', 'forms', 'buttons', 'table', 'tabs', 'lists', 'modal', 'gallery', 'thumbnails', 'alert', 'registration', 'login', 'menu', 'navbar', 'search', 'footer']
+
+  list_tags.each do |tag|
+      ActsAsTaggableOn::Tag.new(:name => tag).save
+  end
+end
