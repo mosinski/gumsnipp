@@ -8,10 +8,16 @@ class Snipp < ActiveRecord::Base
   validates :title, uniqueness: true
   validates :html_code, presence: true
   validate :maximum_amount_of_tags
+  validate :minimum_amount_of_tags
 
   def maximum_amount_of_tags
     number_of_tags = tag_list_cache_on("tags").uniq.length
     errors.add(:base, "Please only add 3 tags") if number_of_tags > 3
+  end
+
+  def minimum_amount_of_tags
+    number_of_tags = tag_list_cache_on("tags").uniq.length
+    errors.add(:base, "Please add some tags") if number_of_tags == 0
   end
 
   def slug

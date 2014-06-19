@@ -47,8 +47,21 @@
               <a><span><%= image_tag(current_user.avatar(24), size: "24", class: "avatar") %> Profile<i class="icon-down-open-mini"></i></span></a>
               <div class="dropdown">
                 <ul>
-                  <li><%= link_to "Settings", edit_user_registration_path %></li>
-                  <li><%= link_to "Logout", destroy_user_session_path, :method => :delete if current_user %></li>
+                  <li>
+                    <%= link_to edit_user_registration_path do %>
+                      <i class="icon-layout"></i>My snippets
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to edit_user_registration_path do %>
+                      <i class="icon-tools"></i>Settings
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to destroy_user_session_path, :method => :delete do %>
+                      <i class="icon-logout"></i>Logout
+                    <% end %>
+                  </li>
                 </ul>
               </div>
             </li>

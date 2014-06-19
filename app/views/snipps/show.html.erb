@@ -1,6 +1,6 @@
 <section class="pill tabs">
   <div class="title-bar shaded">
-    <%= image_tag(@snipp.user.gravatar(60), class: "avatar") %>
+    <%= image_tag(@snipp.user.avatar(60), class: "avatar") %>
     <div class="name">
       <h4 class="lead"><%= @snipp.title %></h4>
       <h5>Snipp by <%= @snipp.user.nickname %></h5>
@@ -26,35 +26,41 @@
   </div>
 
   <ul class="tab-nav" style="width:250px;">
-      <li class="active primary label"><a>Preview</a></li>
-      <% if @snipp.html_code.present? %>
-        <li class="primary label"><a>HTML</a></li>
-      <% end %>
+    <li class="active primary label"><a>Preview</a></li>
+    <% if @snipp.html_code.present? %>
+      <li class="primary label"><a>HTML</a></li>
+    <% end %>
 
-      <% if @snipp.css_code.present? %>
-        <li class="primary label"><a>CSS</a></li>
-      <% end %>
+    <% if @snipp.css_code.present? %>
+      <li class="primary label"><a>CSS</a></li>
+    <% end %>
 
-      <% if @snipp.js_code.present? %>
-        <li class="primary label"><a>JS</a></li>
-      <% end %>
+    <% if @snipp.js_code.present? %>
+      <li class="primary label"><a>JS</a></li>
+    <% end %>
   </ul>
 
   <div class="tab-content active">
     <iframe src="<%= url_for action: :subscreens, id: @snipp.id %>" scrollbars="auto" name="subscreens" width=100%></iframe>
   </div>
 
-  <div class="tab-content">
-    <code lang="html"><%= raw (textilize(@snipp.html_code)).gsub(/\<br\s*\/?\>/, "") %></code>
-  </div>
+  <% if @snipp.html_code.present? %>
+    <div class="tab-content">
+      <code lang="html"><%= raw (textilize(@snipp.html_code)).gsub(/\<br\s*\/?\>/, "") %></code>
+    </div>
+  <% end %>
 
-  <div class="tab-content">
-    <code><%= raw (textilize(@snipp.css_code)).gsub(/\<br\s*\/?\>/, "") %></code>
-  </div>
+  <% if @snipp.css_code.present? %>
+    <div class="tab-content">
+      <code><%= raw (textilize(@snipp.css_code)).gsub(/\<br\s*\/?\>/, "") %></code>
+    </div>
+  <% end %>
 
-  <div class="tab-content">
-    <code><%= raw (textilize(@snipp.js_code)).gsub(/\<br\s*\/?\>/, "") %></code>
-  </div>
+  <% if @snipp.js_code.present? %>
+    <div class="tab-content">
+      <code><%= raw (textilize(@snipp.js_code)).gsub(/\<br\s*\/?\>/, "") %></code>
+    </div>
+  <% end %>
 </section>
 
 <div id ="disqus_thread">
