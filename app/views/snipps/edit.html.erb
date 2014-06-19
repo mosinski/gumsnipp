@@ -2,5 +2,8 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @snipp %> |
-<%= link_to 'Back', snipps_path %>
+<div class="medium default btn">
+  <%= link_to snipps_path do %>
+    <i class="icon-left-bold"></i> Back
+  <% end %>
+</div>

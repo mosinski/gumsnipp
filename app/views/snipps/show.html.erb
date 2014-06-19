@@ -7,6 +7,16 @@
     </div>
   </div>
 
+  <% if current_user&&@snipp.owner?(current_user) %>
+    <ul>
+      <li class="field">
+        <div class="large rounded primary btn twelve columns">
+          <%= link_to 'Edit', edit_snipp_path(@snipp) %>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+
   <br />
 
   <div class="light label"><i class="icon-eye"></i><%= number_to_human(@snipp.visits_count) %> Views</div>
@@ -67,5 +77,8 @@
   <%= raw disqus_thread %>
 </div>
 
-<%= link_to 'Edit', edit_snipp_path(@snipp) %> |
-<%= link_to 'Back', snipps_path %>
+<div class="medium default btn">
+  <%= link_to snipps_path do %>
+    <i class="icon-left-bold"></i> Back
+  <% end %>
+</div>
