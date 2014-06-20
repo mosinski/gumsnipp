@@ -51,7 +51,7 @@
   </ul>
 
   <div class="tab-content active">
-    <iframe src="<%= url_for action: :subscreens, id: @snipp.id %>" scrollbars="auto" name="subscreens" width=100%></iframe>
+    <iframe src="<%= url_for action: :subscreens, id: @snipp.id %>" scrollbars="auto" name="subscreens" width="100%" sandbox=""></iframe>
   </div>
 
   <% if @snipp.html_code.present? %>
