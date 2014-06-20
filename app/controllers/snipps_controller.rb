@@ -71,6 +71,16 @@ class SnippsController < ApplicationController
     @tags = TagsHelper.get_tags
   end
 
+  def user_snipps
+    if params[:user]
+      @user = User.find(params[:user])
+      @snipps = Snipp.where(user_id: @user.id).search(params[:search], params[:page])
+    else
+      @snipps = current_user.snipps.search(params[:search], params[:page])
+      render 'snipps/index'
+    end
+  end
+
   private
     def set_snipp
       @snipp = Snipp.find(params[:id])

@@ -3,7 +3,7 @@
     <%= image_tag(@snipp.user.avatar(60), class: "avatar") %>
     <div class="name">
       <h4 class="lead"><%= @snipp.title %></h4>
-      <h5>Snipp by <%= @snipp.user.nickname %></h5>
+      <h5>Snipp by <%= link_to @snipp.user.nickname, user_snipps_path+"/#{@snipp.user.id}" %></h5>
     </div>
   </div>
 

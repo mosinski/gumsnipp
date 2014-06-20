@@ -54,15 +54,19 @@
     </ul>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  <a class="toggle" gumby-trigger="#drawer1" style="float:right;cursor:pointer">Delete account?</a>
 
-  <p>Unhappy?
-    <ul>
-      <li class="field">
-      <div><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "medium danger btn" %></div>
-      </li>
-    </ul>
-  </p>
+  <div class="drawer" id="drawer1" style="background:white;box-shadow:none">
+    <h3>Cancel my account</h3>
+
+    <p>Unhappy?
+      <ul>
+        <li class="field">
+          <div><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "medium danger btn", style: "color:white" %></div>
+        </li>
+      </ul>
+    </p>
+  </div>
 
   <div class="medium default btn">
     <%= link_to :back do %>

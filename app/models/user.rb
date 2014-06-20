@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
       "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
     end
   end
+
+  def snipps
+    Snipp.where(user_id: self.id)
+  end
 end

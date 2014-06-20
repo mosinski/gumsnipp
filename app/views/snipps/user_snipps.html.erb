@@ -1,3 +1,5 @@
+<%= image_tag(@user.avatar(60), class: "avatar") %> <h2 style="display:inline"><%= @user.nickname %>'s snippets</h2>
+
 <% @snipps.each_slice(3) do |snipps| %>
   <div class="row">
     <% snipps.each do |snipp| %>
