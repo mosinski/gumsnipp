@@ -1,9 +1,9 @@
 <section class="pill tabs">
   <div class="title-bar shaded">
-    <%= image_tag(@snipp.user.avatar(60), class: "avatar") %>
+    <%= image_tag(@snipp.user.avatar(60), size: "60", class: "avatar") if @snipp.user %>
     <div class="name">
       <h4 class="lead"><%= @snipp.title %></h4>
-      <h5>Snipp by <%= link_to @snipp.user.nickname, user_snipps_path+"/#{@snipp.user.id}" %></h5>
+      <h5>Snipp by <%= link_to @snipp.user.nickname, user_snipps_path+"/#{@snipp.user.id}" if @snipp.user %></h5>
     </div>
   </div>
 
