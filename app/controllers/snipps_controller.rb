@@ -64,6 +64,7 @@ class SnippsController < ApplicationController
 
   def subscreens
     @snipp = Snipp.find(params[:id])
+    @snipp.html_code = ActionController::Base.helpers.sanitize(@snipp.html_code, :tags => Snipp.html_tags, :attributes => Snipp.html_attributes)
     render :partial => 'snipp', :layout => false
   end
 

@@ -44,4 +44,16 @@ class Snipp < ActiveRecord::Base
   def owner?(user)
     self.user_id == user.id
   end
+
+  def self.html_tags
+    tags = %w(a acronym b strong i em li ul ol h1 h2 h3 h4 h5 h6 blockquote br cite sub sup ins p div button textarea input form span select option fieldset legend label img section for table thead tbody tr th td)
+  end
+
+  def self.html_attributes
+    attributes = %w(href title id class type value name placeholder src gumby-trigger gumby-retina)
+  end
+
+  def self.js_tags
+    tags = %w(a acronym b strong i em li ul ol h1 h2 h3 h4 h5 h6 blockquote br cite sub sup ins p)
+  end
 end
