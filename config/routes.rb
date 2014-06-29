@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     get 'subscreens', :on => :collection
   end
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   post '/users/upload_avatar' => 'users#upload_avatar'
   get '/ui' => 'static#ui'
