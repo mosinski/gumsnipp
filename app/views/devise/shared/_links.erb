@@ -1,3 +1,23 @@
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <div class="row">
+      <%- if controller_name != 'sessions' %>
+        <div class="twelve columns medium default btn">
+          <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+            <i class="icon-github"></i> Sign up with <%= provider.to_s.titleize %>
+          <% end %>
+        </div>
+      <% else -%>
+        <div class="twelve columns medium default btn">
+          <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+            <i class="icon-github"></i> Sign in with <%= provider.to_s.titleize %>
+          <% end %>
+        </div>
+      <% end -%>
+    </div>
+  <% end -%>
+<% end -%>
+
 <%- if controller_name != 'sessions' %>
   <%= link_to "Already have an account?", new_session_path(resource_name) %><br />
 <% end -%>
@@ -16,14 +36,4 @@
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%- if controller_name != 'sessions' %>
-      <div class="medium default btn icon-left entypo icon-github"><%= link_to "Sign up with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %></div>
-    <% else -%>
-      <div class="medium default btn icon-left entypo icon-github"><%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %></div>
-    <% end -%>
-  <% end -%>
 <% end -%>
