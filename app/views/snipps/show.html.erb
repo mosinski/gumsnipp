@@ -74,7 +74,7 @@
 </section>
 
 <div>
-  <h3>Similar snippets:</h3>
+  <%= content_tag(:h3, "Similar snippets:") if @snipps_similar.any? %>
   <div class="row">
     <% @snipps_similar.each do |snipp| %>
       <div class="four columns thumbnail" onclick="location.href='<%= url_for snipp %>'" style="cursor:pointer">
