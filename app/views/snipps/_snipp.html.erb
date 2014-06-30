@@ -3,6 +3,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script>
     <%= raw @snipp.js_code %>
+    $( document ).ready(function() {
+      $.ajax.abortAll();
+    });
   </script>
 </head>
 

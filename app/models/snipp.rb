@@ -38,7 +38,7 @@ class Snipp < ActiveRecord::Base
   end
 
   def self.search(search, page)
-    order('title').where('title LIKE ?', "%#{search}%").paginate(page: page, per_page: 9)
+    order('created_at DESC').where('title ILIKE ?', "%#{search}%").paginate(page: page, per_page: 9)
   end
 
   def owner?(user)
