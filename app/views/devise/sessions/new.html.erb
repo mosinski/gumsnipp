@@ -10,8 +10,8 @@ body {
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <ul>
         <li class="prepend field">
-          <span class="adjoined"><i class="icon-mail"></i></span>
-          <%= f.email_field :email, autofocus: true, class: "xwide text input", placeholder: "Email", required: true %>
+          <span class="adjoined"><i class="icon-user"></i></span>
+          <%= f.text_field :login, autofocus: true, class: "xwide text input", placeholder: "Email or Nickname", required: true %>
         </li>
 
         <li class="prepend field">

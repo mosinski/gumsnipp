@@ -1,10 +1,13 @@
 Devise.setup do |config|
   config.secret_key = ENV['SECRET_KEY'] || ('x' * 30)
+
   config.omniauth :github, ENV['GITHUB_ID'], ENV['GITHUB_SECRET']
 
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   require 'devise/orm/active_record'
+
+  config.authentication_keys = [ :login ]
 
   config.case_insensitive_keys = [ :email ]
 
