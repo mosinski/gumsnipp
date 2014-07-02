@@ -1,24 +1,22 @@
 class SnippsController < ApplicationController
   before_action :set_snipp, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :only => [:new, :edit, :update, :destroy]
-  before_action :authorize, :only => [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :authorize, only: [:edit, :update, :destroy]
 
   def index
     if params[:tag]
-      @snipps = Snipp.tagged_with(params[:tag]).search(params[:search], params[:page])
+      @snipps = Snipp.tagged_with(params[:tag]).select{|snipp| snipp.published?}.search(params[:search], params[:page])
     else
-      @snipps = Snipp.search(params[:search], params[:page])
+      @snipps = Snipp.where(published: true).search(params[:search], params[:page])
     end
   end
 
   def show
     @snipp = Snipp.find(params[:id])
     @snipps_similar = Snipp.tagged_with(@snipp.tag_list, any: true).select{|snipp| snipp.id != @snipp.id}.last(3)
-    #@snipps_similar = Snipp.joins(:taggings).where('snipp.id != ?', @snipp.id).where(taggings: { tag_id: @snipp.tag_ids })
-    #@snipps_similar = Snipp.tagged_with(@snipp.tag_list, any: true).delete(@snipp)#.last(3)
-    @snipp.html_code = CodeRay.scan(@snipp.html_code, :html).div(:line_numbers => :table) if @snipp.html_code.present?
-    @snipp.css_code = CodeRay.scan(@snipp.css_code, :css).div(:line_numbers => :table) if @snipp.css_code.present?
-    @snipp.js_code = CodeRay.scan(@snipp.js_code, :java_script).div(:line_numbers => :table) if @snipp.js_code.present?
+    @snipp.html_code = CodeRay.scan(@snipp.html_code, :html).div(line_numbers: :table) if @snipp.html_code.present?
+    @snipp.css_code = CodeRay.scan(@snipp.css_code, :css).div(line_numbers: :table) if @snipp.css_code.present?
+    @snipp.js_code = CodeRay.scan(@snipp.js_code, :java_script).div(line_numbers: :table) if @snipp.js_code.present?
     Visit.track(@snipp, request.remote_ip)
   end
 
@@ -67,8 +65,8 @@ class SnippsController < ApplicationController
 
   def subscreens
     @snipp = Snipp.find(params[:id])
-    @snipp.html_code = ActionController::Base.helpers.sanitize(@snipp.html_code, :tags => Snipp.html_tags, :attributes => Snipp.html_attributes)
-    render :partial => 'snipp', :layout => false
+    @snipp.html_code = ActionController::Base.helpers.sanitize(@snipp.html_code, tags: Snipp.html_tags, attributes: Snipp.html_attributes)
+    render partial: 'snipp', layout: false
   end
 
   def tags
@@ -85,6 +83,11 @@ class SnippsController < ApplicationController
     end
   end
 
+  def set_public
+    @snipp = Snipp.find(params[:id])
+    @snipp.toggle!(:published)
+  end
+
   private
     def set_snipp
       @snipp = Snipp.find(params[:id])
@@ -93,8 +96,9 @@ class SnippsController < ApplicationController
     def snipp_params
       params.require(:snipp).permit(:title, :html_code, :css_code, :js_code, :user_id, tag_list: [])
     end
+
     def authorize
-      unless @snipp.owner?(current_user)
+      unless @snipp.owner?(current_user) || current_user.admin?
         redirect_to root_url, flash: { alert: "Unauthorize" }
       end
     end
