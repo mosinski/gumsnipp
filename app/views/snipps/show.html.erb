@@ -30,7 +30,7 @@
   <br />
 
   <div class="medium pill-left primary btn" style="float:right">
-    <a href="<%= url_for action: :subscreens, id: @snipp.id %>" target="_blank">
+    <a href="<%= iframe_url(@snipp.id) %>" target="_blank">
       <i class="icon-resize-full"></i>
     </a>
   </div>
@@ -51,7 +51,7 @@
   </ul>
 
   <div class="tab-content active">
-    <iframe src="<%= url_for action: :subscreens, id: @snipp.id %>" scrollbars="auto" name="subscreens" width="100%"></iframe>
+    <iframe src="<%= iframe_url(@snipp.id) %>" scrollbars="auto" name="subscreens" width="100%"></iframe>
   </div>
 
   <% if @snipp.html_code.present? %>

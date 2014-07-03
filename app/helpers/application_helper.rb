@@ -7,4 +7,8 @@ module ApplicationHelper
     when "alert" then "warning alert"
     end
   end
+
+  def iframe_url(snipp)
+    "http://iframe.gumsnipp.com/snipp/#{snipp.id}"
+  end
 end
