@@ -5,7 +5,7 @@ class SnippsController < ApplicationController
 
   def index
     if params[:tag]
-      @snipps = Snipp.tagged_with(params[:tag]).select{|snipp| snipp.published?}.search(params[:search], params[:page])
+      @snipps = Snipp.tagged_with(params[:tag]).search(params[:search], params[:page]).select{|snipp| snipp.published?}
     else
       @snipps = Snipp.where(published: true).search(params[:search], params[:page])
     end
