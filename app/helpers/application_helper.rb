@@ -9,6 +9,6 @@ module ApplicationHelper
   end
 
   def iframe_url(snipp)
-    "http://iframe.gumsnipp.com/snipp/#{snipp.id}"
+    "http://iframe.gumsnipp.com/snipp/#{snipp}"
   end
 end
