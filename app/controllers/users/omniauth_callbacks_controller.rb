@@ -6,7 +6,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect(user)
     else
       session["devise.user_attributes"] = user.attributes
-      redirect_to new_user_registration_url
+      redirect_to new_user_registration_url, flash: { error: 'Authentication failed, please try again.' }
     end
   end
 end
