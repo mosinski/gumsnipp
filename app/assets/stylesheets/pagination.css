@@ -86,6 +86,7 @@
   border-left-width: 0;
 }
 
+.pagination .gap,
 .pagination .disabled,
 .pagination .disabled a,
 .pagination .disabled a:hover {
