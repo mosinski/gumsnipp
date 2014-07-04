@@ -11,4 +11,8 @@ module ApplicationHelper
   def iframe_url(snipp)
     "http://iframe.gumsnipp.com/snipp/#{snipp}"
   end
+
+  def to_checked
+    Snipp.where(published: false, to_check: true).search(params[:search], params[:page]).count
+  end
 end

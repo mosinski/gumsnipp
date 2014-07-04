@@ -7,6 +7,7 @@ class CreateSnipps < ActiveRecord::Migration
       t.text :js_code
       t.integer :user_id
       t.boolean :published,          default: false
+      t.boolean :to_check,          default: false
 
       t.timestamps
     end

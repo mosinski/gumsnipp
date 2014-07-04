@@ -48,6 +48,14 @@
               <div class="dropdown">
                 <ul>
                   <li>
+                    <%= link_to to_check_path do %>
+                      <i class="icon-list-add"></i>For verifiable
+                      <% if to_checked > 0 %>
+                        <span class="primary badge" id="unchecked_count"><%= to_checked %></span>
+                      <% end %>
+                    <% end %>
+                  </li>
+                  <li>
                     <%= link_to user_snipps_path do %>
                       <i class="icon-layout"></i>My snippets
                     <% end %>

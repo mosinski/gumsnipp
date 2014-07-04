@@ -54,3 +54,8 @@ footer {
   background-color: #FFF;
   border-top: 1px solid #E5E5E5 !important;
 }
+span#unchecked_count {
+  padding: 0px 5px;
+  position: absolute;
+  margin-top: 3px;
+}

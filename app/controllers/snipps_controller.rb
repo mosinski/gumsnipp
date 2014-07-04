@@ -1,11 +1,12 @@
 class SnippsController < ApplicationController
   before_action :set_snipp, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-  before_action :authorize, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :unchecked, :set_public, :to_verification]
+  before_action :authorize, only: [:edit, :update, :destroy, :to_verification]
+  before_action :administrator, only: [:unchecked, :set_public]
 
   def index
     if params[:tag]
-      @snipps = Snipp.tagged_with(params[:tag]).search(params[:search], params[:page]).select{|snipp| snipp.published?}
+      @snipps = Snipp.tagged_with(params[:tag]).search(params[:search], params[:page]).where(published: true)
     else
       @snipps = Snipp.where(published: true).search(params[:search], params[:page])
     end
@@ -69,6 +70,12 @@ class SnippsController < ApplicationController
     render partial: 'snipp', layout: false
   end
 
+  def unchecked
+    @snipps = Snipp.where(to_check: true).search(params[:search], params[:page])
+
+    render 'index.html.erb'
+  end
+
   def tags
     @tags = TagsHelper.get_tags
   end
@@ -86,6 +93,14 @@ class SnippsController < ApplicationController
   def set_public
     @snipp = Snipp.find(params[:id])
     @snipp.toggle!(:published)
+    @snipp.toggle!(:to_check)
+    redirect_to :back, flash: { success: 'Snipp was successfully published.' }
+  end
+
+  def to_verification
+    @snipp = Snipp.find(params[:id])
+    @snipp.toggle!(:to_check)
+    redirect_to :back, flash: { success: 'Snipp was successfully send to verification' }
   end
 
   private
@@ -99,6 +114,12 @@ class SnippsController < ApplicationController
 
     def authorize
       unless @snipp.owner?(current_user) || current_user.admin?
+        redirect_to root_url, flash: { alert: "Unauthorize" }
+      end
+    end
+
+    def administrator
+      unless current_user.admin?
         redirect_to root_url, flash: { alert: "Unauthorize" }
       end
     end

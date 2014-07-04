@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140614151422) do
     t.text     "js_code"
     t.integer  "user_id"
     t.boolean  "published",  default: false
+    t.boolean  "to_check",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

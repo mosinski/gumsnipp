@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   get '/user_snipps' => 'snipps#user_snipps'
   get 'user_snipps/:user', to: 'snipps#user_snipps', as: :user
 
+  get '/to_check' => 'snipps#unchecked'
+  get '/set_public' => 'snipps#set_public'
+  get '/set_public/:id', to: 'snipps#set_public'
+
+  get '/to_verification' => 'snipps#to_verification'
+  get '/to_verification/:id', to: 'snipps#to_verification'
+
   get '/tags' => 'snipps#tags'
   get 'tags/:tag', to: 'snipps#index', as: :tag
 
