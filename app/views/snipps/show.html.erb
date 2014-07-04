@@ -22,7 +22,7 @@
         <li class="field">
           <div class="large rounded success btn twelve columns">
             <%= link_to 'Publish', set_public_path+"/#{@snipp.id}" if current_user.admin? && @snipp.to_check? %>
-            <%= link_to 'Send To Verification', to_verification_path+"/#{@snipp.id}" if @snipp.owner?(current_user) && !@snipp.to_check? %>
+            <%= link_to 'Send To Verification', to_verification_path+"/?id=#{@snipp.id}" if @snipp.owner?(current_user) && !@snipp.to_check? %>
           </div>
         </li>
       </ul>

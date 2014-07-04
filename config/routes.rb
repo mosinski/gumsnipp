@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'user_snipps/:user', to: 'snipps#user_snipps', as: :user
 
   get '/to_check' => 'snipps#unchecked'
+
   get '/set_public' => 'snipps#set_public'
   get '/set_public/:id', to: 'snipps#set_public'
 

@@ -1,5 +1,5 @@
 class SnippsController < ApplicationController
-  before_action :set_snipp, only: [:show, :edit, :update, :destroy]
+  before_action :set_snipp, only: [:show, :edit, :update, :destroy, :set_public, :to_verification]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :unchecked, :set_public, :to_verification]
   before_action :authorize, only: [:edit, :update, :destroy, :to_verification]
   before_action :administrator, only: [:unchecked, :set_public]
@@ -99,6 +99,7 @@ class SnippsController < ApplicationController
 
   def to_verification
     @snipp = Snipp.find(params[:id])
+
     @snipp.toggle!(:to_check)
     redirect_to :back, flash: { success: 'Snipp was successfully send to verification' }
   end
@@ -106,6 +107,9 @@ class SnippsController < ApplicationController
   private
     def set_snipp
       @snipp = Snipp.find(params[:id])
+      unless @snipp
+        redirect_to root_url, flash: { alert: "Snipp not found" }
+      end
     end
 
     def snipp_params
