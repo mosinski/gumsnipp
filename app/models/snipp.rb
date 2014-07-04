@@ -6,6 +6,7 @@ class Snipp < ActiveRecord::Base
 
   validates :title, presence: true
   validates :title, uniqueness: true
+  validates_format_of :title, :with => /\A[A-Z\sa-z]+\z/
   validates :html_code, presence: true
   validate :maximum_amount_of_tags
   validate :minimum_amount_of_tags

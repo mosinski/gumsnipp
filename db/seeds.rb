@@ -17,4 +17,12 @@ when "production"
   list_tags.each do |tag|
       ActsAsTaggableOn::Tag.new(name: tag).save
   end
+
+  99.times do |article|
+    Snipp.create(title: Faker::Lorem.characters(10), html_code:Faker::Lorem.paragraph(5), user_id: 1, published: true)
+  end
+
+  33.times do |article|
+    Snipp.create(title: Faker::Lorem.characters(10), html_code:Faker::Lorem.paragraph(5), user_id: 1, to_check: true)
+  end
 end
