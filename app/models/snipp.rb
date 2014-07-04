@@ -8,8 +8,8 @@ class Snipp < ActiveRecord::Base
   validates :title, uniqueness: true
   validates_format_of :title, :with => /\A[A-Z\sa-z]+\z/
   validates :html_code, presence: true
-  validate :maximum_amount_of_tags
-  validate :minimum_amount_of_tags
+#  validate :maximum_amount_of_tags
+#  validate :minimum_amount_of_tags
 
   def maximum_amount_of_tags
     number_of_tags = tag_list_cache_on("tags").uniq.length
