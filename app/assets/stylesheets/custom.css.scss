@@ -59,3 +59,17 @@ span#unchecked_count {
   position: absolute;
   margin-top: 3px;
 }
+div#welcome {
+  margin-top:-20px;
+  background:url(image_path('welcome_background.jpg'));
+  padding: 5px 15px 10px;
+  font-size: 21px;
+  text-align: center;
+  text-shadow: 2px 2px 0px rgba(59, 88, 139, 0.4);
+}
+div#welcome > .row h1 {
+  color: #FFF !important;
+}
+div#welcome > .row h4 {
+  color: lightgray !important;
+}
