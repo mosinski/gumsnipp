@@ -39,7 +39,7 @@
           <li class="append field">
             <%= form_tag request.path, :method => 'get', :id => "searchform" do %>
               <%= text_field_tag  :search, params[:search], :placeholder => 'Search', :class => 'search input', :id => 's' %>
-              <div class="medium default btn submit_button", onclick="document.getElementById('searchform').submit()"><i class="icon-search"></i></div>
+              <div class="medium default btn submit_button" onclick="document.getElementById('searchform').submit()"><i class="icon-search"></i></div>
             <% end %>
           </li>
           <% if current_user %>
