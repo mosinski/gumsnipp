@@ -31,6 +31,7 @@ class SnippsController < ApplicationController
 
   def create
     @snipp = Snipp.new(snipp_params)
+    @snipp.title.squish
     @snipp.user_id = current_user.id
 
     respond_to do |format|

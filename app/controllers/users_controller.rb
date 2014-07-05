@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def upload_avatar
     @user = current_user
     file = params[:file]
-    puts file.content_type
 
     if file != nil && file.original_filename.downcase.end_with?('.jpg','.png','.jpeg')
       file.original_filename = @user.nickname

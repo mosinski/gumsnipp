@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   post '/users/upload_avatar' => 'users#upload_avatar'
   get '/ui' => 'static#ui'
+  get '/about' => 'static#about'
 
   get '/user_snipps' => 'snipps#user_snipps'
   get 'user_snipps/:user', to: 'snipps#user_snipps', as: :user

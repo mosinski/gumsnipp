@@ -26,7 +26,7 @@
               </p>
             </li>
           <% end %>
-          <li><a href="/"><i class="icon-home" title="Home"></i>Home</a></li>
+          <li><a href="/"><i class="icon-home" title="About"></i>Home</a></li>
           <li>
             <a><span><i class="icon-archive"></i>Snipps<i class="icon-down-open-mini"></i></span></a>
             <div class="dropdown">
@@ -36,6 +36,7 @@
               </ul>
             </div>
           </li>
+          <li><a href="/about"><i class="icon-info-circled" title="Home"></i>About</a></li>
           <li class="append field">
             <%= form_tag request.path, :method => 'get', :id => "searchform" do %>
               <%= text_field_tag  :search, params[:search], :placeholder => 'Search', :class => 'search input', :id => 's' %>
