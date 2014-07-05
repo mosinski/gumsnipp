@@ -15,10 +15,10 @@
         <a class="toggle" gumby-trigger="#nav1 > .row > ul" href="#"><i class="icon-menu"></i></a>
         <h1 class="tree columns logo">
           <a href="/">
-            <%= image_tag('gumby_mainlogo.png', "gumby-retina" => "") %>
+            <%= image_tag('logo.png', "gumby-retina" => "") %>
           </a>
         </h1>
-        <ul class="nine columns">
+        <ul class="seven columns" style="float:left">
           <% if current_user %>
             <li>
               <p class="medium pretty default btn icon-plus-squared icon-left">
@@ -43,6 +43,8 @@
               <div class="medium default btn submit_button" onclick="document.getElementById('searchform').submit()"><i class="icon-search"></i></div>
             <% end %>
           </li>
+        </ul>
+        <ul class="two columns" style="float:right">
           <% if current_user %>
             <li>
               <a><span><%= image_tag(current_user.avatar(24), size: "24", class: "avatar") %> Profile<i class="icon-down-open-mini"></i></span></a>
