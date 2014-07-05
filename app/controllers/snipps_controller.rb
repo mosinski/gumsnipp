@@ -83,7 +83,7 @@ class SnippsController < ApplicationController
   def user_snipps
     if params[:user]
       @user = User.find(params[:user])
-      @snipps = Snipp.where(user_id: @user.id).search(params[:search], params[:page])
+      @snipps = Snipp.where(user_id: @user.id, published: true).search(params[:search], params[:page])
     else
       @snipps = current_user.snipps.search(params[:search], params[:page])
       render 'snipps/index'
