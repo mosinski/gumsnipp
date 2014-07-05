@@ -107,8 +107,9 @@ class SnippsController < ApplicationController
 
   private
     def set_snipp
-      @snipp = Snipp.find(params[:id])
-      unless @snipp
+      begin
+        @snipp = Snipp.find(params[:id])
+      rescue
         redirect_to root_url, flash: { alert: "Snipp not found" }
       end
     end
