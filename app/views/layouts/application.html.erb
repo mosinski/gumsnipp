@@ -6,6 +6,10 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <meta property="og:site_name" content="Gumsnipp" />
+  <meta property="og:type" content="website" />
+  <%= yield :facebook %>
 </head>
 
 <body>

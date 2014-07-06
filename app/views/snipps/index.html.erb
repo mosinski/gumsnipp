@@ -1,3 +1,10 @@
+<% content_for :facebook do %>
+  <meta property="og:image" content="<%= asset_url('img_silence_demo.jpg') %>" />
+  <meta property="og:title" content="Gumsnipp free code snippets for Gumby" />
+  <meta property="og:url" content="<%= root_url %>" />
+  <meta property="og:description" content="Design elements, playground and code snippets for Gumby HTML/CSS/JS framework" />
+<% end %>
+
 <% @snipps.each_slice(3) do |snipps| %>
   <div class="row">
     <% snipps.each do |snipp| %>

@@ -1,3 +1,10 @@
+<% content_for :facebook do %>
+  <meta property="og:image" content="http://immediatenet.com/t/fs?Size=800x600&URL=<%= url_for action: :subscreens, id: @snipp.id, only_path: false %>" />
+  <meta property="og:title" content="<%= @snipp.title %>" />
+  <meta property="og:url" content="<%= snipp_url(@snipp) %>" />
+  <meta property="og:description" content="Hey check this cool snippet on Gumby.com!" />
+<% end %>
+
 <section class="pill tabs">
   <div class="title-bar shaded">
     <%= image_tag(@snipp.user.avatar(60), size: "60", class: "avatar") if @snipp.user %>
@@ -8,7 +15,7 @@
     <div class="pull_right social-sharing">
       Share on:
       <div class="large metro rounded btn primary">
-        <a href="#">
+        <a href="javascript:fbShare('<%= snipp_url(@snipp) %>', '', '', '', 520, 370)">
           <i class="icon-facebook"></i>
         </a>
       </div>
@@ -124,3 +131,11 @@
     <i class="icon-left-bold"></i> Back
   <% end %>
 </div>
+
+<script>
+  function fbShare(url, title, descr, image, winWidth, winHeight) {
+    var winTop = (screen.height / 2) - (winHeight / 2);
+    var winLeft = (screen.width / 2) - (winWidth / 2);
+    window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+  }
+</script>
