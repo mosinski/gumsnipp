@@ -119,7 +119,7 @@ class SnippsController < ApplicationController
     end
 
     def authorize
-      unless @snipp.owner?(current_user) || current_user.admin?
+      unless @snipp.owner?(current_user)
         redirect_to root_url, flash: { alert: "Unauthorize" }
       end
     end

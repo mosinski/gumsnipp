@@ -5,10 +5,24 @@
       <h4 class="lead"><%= @snipp.title %></h4>
       <h5>Snipp by <%= link_to @snipp.user.nickname, user_snipps_path+"/#{@snipp.user.id}" if @snipp.user %></h5>
     </div>
+    <div class="pull_right social-sharing">
+      Share on:
+      <div class="large metro rounded btn primary">
+        <a href="#">
+          <i class="icon-facebook"></i>
+        </a>
+      </div>
+
+      <div class="large metro rounded btn info">
+        <a href="#">
+          <i class="icon-twitter"></i>
+        </a>
+      </div>
+    </div>
   </div>
 
   <% if current_user %>
-    <% if @snipp.owner?(current_user) || current_user.admin? %>
+    <% if @snipp.owner?(current_user) %>
       <ul>
         <li class="field">
           <div class="large rounded primary btn twelve columns">
@@ -34,7 +48,7 @@
 
   <div class="light label"><i class="icon-eye"></i><%= number_to_human(@snipp.visits_count) %> Views</div>
   <div class="light label" onclick="location.href='#disqus_thread'"><i class="icon-comment"></i>Comments</div>
-  <div style="float:right">
+  <div class="pull_right">
     <i class="icon-tag"></i>Tags:
     <%= raw @snipp.tag_list.map { |t| link_to t, tag_path(t), class: "primary label" }.join(' ') %>
   </div>

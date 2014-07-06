@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   require 'net/ftp'
 
+  before_action :authenticate_user!, only: [:upload_avatar]
+  before_action :authorize, only: [:upload_avatar]
+
   def upload_avatar
     @user = current_user
     file = params[:file]
@@ -24,4 +27,11 @@ class UsersController < ApplicationController
       redirect_to edit_user_registration_path, flash: { error: "This file type is not supported. Only files with the following extensions are allowed: jpg jpeg png" }
     end
   end
+
+  private
+    def authorize
+      unless @snipp.owner?(current_user)
+        redirect_to root_url, flash: { alert: "Unauthorize" }
+      end
+    end
 end

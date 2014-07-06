@@ -16,9 +16,9 @@ a img { border: none; }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary { display: block; }
 
-.pull_right { float: right; }
+.pull_right { float: right !important; }
 
-.pull_left { float: left; }
+.pull_left { float: left !important; }
 
 * html { font-size: 100%; }
 
