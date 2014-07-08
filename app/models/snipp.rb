@@ -4,7 +4,6 @@ class Snipp < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :tags
 
-  TAGS = TagsHelper.get_tags.collect{|a| a}
   FRAMEWORK_VERSIONS = FrameworkHelper.get_versions.collect{|a, b| b}
 
   validates :title, presence: true
@@ -13,7 +12,6 @@ class Snipp < ActiveRecord::Base
   validates :html_code, presence: true
   validate :maximum_amount_of_tags
   validate :minimum_amount_of_tags
-  validates_inclusion_of :tag_list, :in => TAGS
   validates :framework_version, presence: true
   validates_inclusion_of :framework_version, :in => FRAMEWORK_VERSIONS
 
