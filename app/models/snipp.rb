@@ -11,11 +11,11 @@ class Snipp < ActiveRecord::Base
   validates :title, uniqueness: true
   validates_format_of :title, :with => /\A[A-Z\sa-z]+\z/
   validates :html_code, presence: true
-  #validate :maximum_amount_of_tags
-  #validate :minimum_amount_of_tags
-  #validates_inclusion_of :tag_list, :in => TAGS#, :message => "'%{value}' must be in #{TAGS.join ','}"
+  validate :maximum_amount_of_tags
+  validate :minimum_amount_of_tags
+  validates_inclusion_of :tag_list, :in => TAGS
   validates :framework_version, presence: true
-  validates_inclusion_of :framework_version, :in => FRAMEWORK_VERSIONS, :message => "'%{value}' must be in #{FRAMEWORK_VERSIONS.join ','}"
+  validates_inclusion_of :framework_version, :in => FRAMEWORK_VERSIONS
 
   def maximum_amount_of_tags
     number_of_tags = tag_list_cache_on("tags").uniq.length

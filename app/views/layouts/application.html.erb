@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Design elements, playground and code snippets for Gumby HTML/CSS/JS framework">
+  <meta name="keywords" content="gumby framework, gumby, framework, ruby on rails, snippets, code examples, examples">
+  <meta name="author" content="Miłosz Osiński">
+  <meta property="og:site_name" content="Gumsnipp" />
+  <meta property="og:type" content="website" />
+  <%= yield :facebook %>
   <title>Gumsnipp</title>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-  <meta property="og:site_name" content="Gumsnipp" />
-  <meta property="og:type" content="website" />
-  <%= yield :facebook %>
 </head>
 
 <body>
