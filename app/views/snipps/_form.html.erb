@@ -6,9 +6,8 @@
       <h4 class="lead"><%= f.text_field :title, placeholder: 'Title', :class => "input xxwide" %></h4>
     </div>
     <div class="field">
-      <% puts  @tags.nil? %>
-      <% puts f.object.tag_list %>
       <%= f.select :tag_list, options_for_select(TagsHelper.get_tags, f.object.tag_list), {}, {multiple: true, class: "input", placeholder: "Tags..", style: "width:50%" } %>
+      <%= f.select :framework_version, options_for_select(FrameworkHelper.get_versions, f.object.framework_version), {}, {class: "input pull_right", placeholder: "Choose framework version", style: "width:49%"} %>
     </div>
     <ul class="tab-nav">
       <li class="active primary label"><a><%= f.label :html_code %></a></li>

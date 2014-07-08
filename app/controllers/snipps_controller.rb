@@ -115,7 +115,7 @@ class SnippsController < ApplicationController
     end
 
     def snipp_params
-      params.require(:snipp).permit(:title, :html_code, :css_code, :js_code, :user_id, tag_list: [])
+      params.require(:snipp).permit(:title, :html_code, :css_code, :js_code, :user_id, :framework_version, tag_list: [])
     end
 
     def authorize

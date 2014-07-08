@@ -54,7 +54,7 @@
   <br />
 
   <div class="light label"><i class="icon-eye"></i><%= number_to_human(@snipp.visits_count) %> Views</div>
-  <div class="light label" onclick="location.href='#disqus_thread'"><i class="icon-comment"></i>Comments</div>
+  <div class="light label ttip" onclick="location.href='#disqus_thread'" data-tooltip="View comments"><i class="icon-comment"></i>Comments</div>
   <div class="pull_right">
     <i class="icon-tag"></i>Tags:
     <%= raw @snipp.tag_list.map { |t| link_to t, tag_path(t), class: "primary label" }.join(' ') %>
@@ -122,7 +122,7 @@
 <br />
 
 <h3>Comments:</h3>
-<div id ="disqus_thread">
+<div id="disqus_thread">
   <%= raw disqus_thread %>
 </div>
 

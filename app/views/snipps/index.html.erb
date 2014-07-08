@@ -9,7 +9,7 @@
   <div class="row">
     <% snipps.each do |snipp| %>
       <div class="four columns thumbnail">
-        <h5><%= link_to snipp.title, snipp %><span style="float:right" class="ttip" data-tooltip="Viewed"><%= number_to_human(snipp.visits_count) %><i class="icon-eye"></i></span></h5>
+        <h5><%= link_to snipp.title, snipp %><span class="ttip pull_right" data-tooltip="Viewed"><%= number_to_human(snipp.visits_count) %><i class="icon-eye"></i></span></h5>
         <img src="http://immediatenet.com/t/fs?Size=800x600&URL=<%= url_for action: :subscreens, id: snipp.id, only_path: false %>" alt="Snipp Screenshot">
         <div class="field" style="margin-top:-23px">
           <div class="medium primary btn" style="width:100%"><%= link_to "View", snipp %></div>

@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614151422) do
+ActiveRecord::Schema.define(version: 20140707212511) do
+
+  create_table "framework_versions", force: true do |t|
+    t.string   "version",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "snipps", force: true do |t|
     t.string   "title"
@@ -19,8 +25,9 @@ ActiveRecord::Schema.define(version: 20140614151422) do
     t.text     "css_code"
     t.text     "js_code"
     t.integer  "user_id"
-    t.boolean  "published",  default: false
-    t.boolean  "to_check",   default: false
+    t.boolean  "published",         default: false
+    t.boolean  "to_check",          default: false
+    t.string   "framework_version"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,12 +4,18 @@ class Snipp < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :tags
 
+  TAGS = TagsHelper.get_tags.collect{|a| a}
+  FRAMEWORK_VERSIONS = FrameworkHelper.get_versions.collect{|a, b| b}
+
   validates :title, presence: true
   validates :title, uniqueness: true
   validates_format_of :title, :with => /\A[A-Z\sa-z]+\z/
   validates :html_code, presence: true
-  validate :maximum_amount_of_tags
-  validate :minimum_amount_of_tags
+  #validate :maximum_amount_of_tags
+  #validate :minimum_amount_of_tags
+  #validates_inclusion_of :tag_list, :in => TAGS#, :message => "'%{value}' must be in #{TAGS.join ','}"
+  validates :framework_version, presence: true
+  validates_inclusion_of :framework_version, :in => FRAMEWORK_VERSIONS, :message => "'%{value}' must be in #{FRAMEWORK_VERSIONS.join ','}"
 
   def maximum_amount_of_tags
     number_of_tags = tag_list_cache_on("tags").uniq.length
@@ -51,10 +57,6 @@ class Snipp < ActiveRecord::Base
   end
 
   def self.html_attributes
-    attributes = %w(href title id class type value name placeholder src gumby-trigger gumby-retina)
-  end
-
-  def self.js_tags
-    tags = %w(a acronym b strong i em li ul ol h1 h2 h3 h4 h5 h6 blockquote br cite sub sup ins p)
+    attributes = %w(href title id class type value name width height scrollbars placeholder src gumby-trigger gumby-retina data-tooltip)
   end
 end

@@ -8,6 +8,7 @@ class CreateSnipps < ActiveRecord::Migration
       t.integer :user_id
       t.boolean :published,          default: false
       t.boolean :to_check,          default: false
+      t.string :framework_version
 
       t.timestamps
     end
