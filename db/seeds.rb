@@ -17,11 +17,11 @@ when "development"
   User.create(nickname: "localAdministrator", password: "password", password_confirmation: "password", email: "user@example.com", admin: true)
 
   99.times do |snipp|
-    Snipp.create(title: Faker::Name.name, html_code:Faker::Lorem.paragraph(5), user_id: 1, published: true, framework_version: framework_versions.last)
+    Snipp.create(title: Faker::Name.name, html_code: Faker::Lorem.paragraph(3), css_code: "", js_code: "", user_id: 1, published: true, framework_version: framework_versions.last)
   end
 
   33.times do |snipp|
-    Snipp.create(title: Faker::Name.name, html_code:Faker::Lorem.paragraph(5), user_id: 1, to_check: true, framework_version: framework_versions.last)
+    Snipp.create(title: Faker::Name.name, html_code:Faker::Lorem.paragraph(3), css_code: "", js_code: "", user_id: 1, to_check: true, framework_version: framework_versions.last)
   end
 
 when "production"
@@ -39,10 +39,10 @@ when "production"
   end
 
   99.times do |snipp|
-    Snipp.create(title: Faker::Name.name, html_code:Faker::Lorem.paragraph(3), user_id: 1, published: true, framework_version: framework_versions.last)
+    Snipp.create(title: Faker::Name.name, html_code: Faker::Lorem.paragraph(3), css_code: "", js_code: "", user_id: 1, published: true, framework_version: framework_versions.last)
   end
 
   33.times do |snipp|
-    Snipp.create(title: Faker::Name.name, html_code:Faker::Lorem.paragraph(3), user_id: 1, to_check: true, framework_version: framework_versions.last)
+    Snipp.create(title: Faker::Name.name, html_code:Faker::Lorem.paragraph(3), css_code: "", js_code: "", user_id: 1, to_check: true, framework_version: framework_versions.last)
   end
 end

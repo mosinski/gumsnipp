@@ -10,7 +10,7 @@
     <%= image_tag(@snipp.user.avatar(60), size: "60", class: "avatar") if @snipp.user %>
     <div class="name">
       <h4 class="lead"><%= @snipp.title %></h4>
-      <h5>Snipp by <%= link_to @snipp.user.nickname, user_snipps_path+"/#{@snipp.user.id}" if @snipp.user %></h5>
+      <h5>Gymby <%= @snipp.framework_version %> Snippet by <%= link_to @snipp.user.nickname, user_snipps_path+"/#{@snipp.user.id}" if @snipp.user %></h5>
     </div>
     <div class="pull_right social-sharing">
       Share on:
@@ -57,6 +57,7 @@
   <div class="light label ttip" onclick="location.href='#disqus_thread'" data-tooltip="View comments"><i class="icon-comment"></i>Comments</div>
   <div class="pull_right">
     <i class="icon-tag"></i>Tags:
+    <span class="primary label"><%= @snipp.framework_version %></span>
     <%= raw @snipp.tag_list.map { |t| link_to t, tag_path(t), class: "primary label" }.join(' ') %>
   </div>
 
