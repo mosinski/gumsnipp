@@ -1,3 +1,7 @@
-<% @tags.to_a.each do |tag| %>
-  <div class="large primary btn"><%= link_to tag, tag_path(tag.to_s) %></div>
+<% @tags.to_a.each_slice(3).with_index do |tags, indeks| %>
+  <div class="row">
+    <% tags.each do |tag| %>
+      <div class="four columns medium btn" style="background-color:<%= lighten_color("#2C3E50", indeks.to_f/10) %>"><%= link_to tag, tag_path(tag.to_s) %></div>
+    <% end %>
+  </div>
 <% end %>
