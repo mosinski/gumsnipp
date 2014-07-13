@@ -7,6 +7,9 @@ class SnippsController < ApplicationController
   def index
     if params[:tag]
       @snipps = Snipp.tagged_with(params[:tag]).search(params[:search], params[:page]).where(published: true)
+    elsif params[:framework_version]
+      puts "Jestem w Framework Version"
+      @snipps = Snipp.search(params[:search], params[:page]).where(framework_version: params[:framework_version])
     else
       @snipps = Snipp.where(published: true).search(params[:search], params[:page])
     end
@@ -106,7 +109,6 @@ class SnippsController < ApplicationController
 
   def to_verification
     @snipp = Snipp.find(params[:id])
-
     @snipp.toggle!(:to_check)
     redirect_to :back, flash: { success: 'Snipp was successfully send to verification' }
   end

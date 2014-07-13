@@ -57,7 +57,7 @@
   <div class="light label ttip" onclick="location.href='#disqus_thread'" data-tooltip="View comments"><i class="icon-comment"></i>Comments</div>
   <div class="pull_right">
     <i class="icon-tag"></i>Tags:
-    <span class="primary label"><%= @snipp.framework_version %></span>
+    <%= link_to @snipp.framework_version, snipps_path(framework_version: @snipp.framework_version), class: "primary label" %>
     <%= raw @snipp.tag_list.map { |t| link_to t, tag_path(t), class: "primary label" }.join(' ') %>
   </div>
 
