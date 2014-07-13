@@ -10,7 +10,7 @@
     <% snipps.each do |snipp| %>
       <div class="four columns thumbnail">
         <h5>
-          <%= link_to snipp.title, snipp %>
+          <%= link_to truncate(snipp.title, length: 33), snipp %>
           <li class="primary label ttip pull_right" data-tooltip="Gumby version">
             <%= link_to snipp.framework_version, snipps_path(framework_version: snipp.framework_version) %>
           </li>
