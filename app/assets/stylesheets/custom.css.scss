@@ -12,6 +12,11 @@
   vertical-align: sub;
 }
 .name { display:inline-block; }
+form textarea, .code pre {
+  -moz-tab-size:2;
+  -o-tab-size:2;
+  tab-size:2;
+}
 form#searchform { height:30px }
 form#searchform .submit_button {
   margin-left: -32px;
