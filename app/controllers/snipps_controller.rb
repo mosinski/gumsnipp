@@ -18,9 +18,9 @@ class SnippsController < ApplicationController
   def show
     @snipp = Snipp.find(params[:id])
     @snipps_similar = Snipp.tagged_with(@snipp.tag_list, any: true).where(published: true).select{|snipp| snipp.id != @snipp.id}.last(3)
-    @snipp.html_code = CodeRay.scan(@snipp.html_code, :html).div(line_numbers: :table) if @snipp.html_code.present?
-    @snipp.css_code = CodeRay.scan(@snipp.css_code, :css).div(line_numbers: :table) if @snipp.css_code.present?
-    @snipp.js_code = CodeRay.scan(@snipp.js_code, :java_script).div(line_numbers: :table) if @snipp.js_code.present?
+    @snipp.html_code = CodeRay.scan(@snipp.html_code, :html).div(line_numbers: :table, tab_width: 2) if @snipp.html_code.present?
+    @snipp.css_code = CodeRay.scan(@snipp.css_code, :css).div(line_numbers: :table, tab_width: 2) if @snipp.css_code.present?
+    @snipp.js_code = CodeRay.scan(@snipp.js_code, :java_script).div(line_numbers: :table, tab_width: 2) if @snipp.js_code.present?
     Visit.track(@snipp, request.remote_ip)
   end
 
