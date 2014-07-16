@@ -55,6 +55,6 @@ class Snipp < ActiveRecord::Base
   end
 
   def self.html_attributes
-    attributes = %w(href title id class type value name width height scrollbars placeholder src gumby-trigger gumby-retina data-tooltip)
+    attributes = %w(href title id class type value name width height scrollbars placeholder src gumby-trigger gumby-retina data-tooltip colspan)
   end
 end
