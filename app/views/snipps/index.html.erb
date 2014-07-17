@@ -18,7 +18,7 @@
             <%= number_to_human(snipp.visits_count) %><i class="icon-eye"></i>
           </span>
         </h5>
-        <img src="http://immediatenet.com/t/fs?Size=800x600&URL=<%= iframe_url(snipp.id) %>" alt="Snipp Screenshot">
+        <img src="http://api.webthumbnail.org?width=500&height=500&screen=1024&url=<%= iframe_url(snipp.id) %>" alt="Snipp Screenshot">
         <div class="field" style="margin-top:-23px">
           <div class="medium primary btn" style="width:100%"><%= link_to "View", snipp %></div>
         </div>
