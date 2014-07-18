@@ -8,8 +8,13 @@ module ApplicationHelper
     end
   end
 
-  def iframe_url(snipp)
-    "http://iframe.gumsnipp.com/snipp/#{snipp}"
+  def iframe_url(snipp,version)
+    case Rails.env
+    when "production"
+      "http://iframe.gumsnipp.com/snipp/#{snipp}-v#{version}"
+    when "development"
+      "https://lh5.googleusercontent.com/-6M5SeBloZWg/UlL5OfD_apI/AAAAAAAAYME/w6VWLIjdp2A/w500-h400-no/no-cover-image.jpg"
+    end
   end
 
   def to_checked

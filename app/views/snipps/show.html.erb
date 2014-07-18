@@ -114,7 +114,7 @@
     <% @snipps_similar.each do |snipp| %>
       <div class="four columns thumbnail" onclick="location.href='<%= url_for snipp %>'" style="cursor:pointer">
         <h5><%= link_to snipp.title, snipp %><span style="float:right" class="ttip" data-tooltip="Viewed"><%= number_to_human(snipp.visits_count) %><i class="icon-eye"></i></span></h5>
-        <img src="http://api.webthumbnail.org?width=500&height=500&screen=1024&url=<%= iframe_url(snipp.id) %>" alt="Snipp Screenshot">
+        <img src="http://api.webthumbnail.org?width=500&height=400&screen=1024&url=<%= iframe_url(snipp.id,snipp.snipp_version) %>" alt="Snipp Screenshot">
       </div>
     <% end %>
   </div>
