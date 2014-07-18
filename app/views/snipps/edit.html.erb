@@ -2,15 +2,14 @@
 
 <%= render 'form' %>
 
-<ul>
-  <li class="field">
-    <div class="actions">
-      <%= link_to @snipp, confirm: "Are you sure you want to destroy snipp '#{@snipp.title}'?", method: :delete, class: "medium danger btn", style: "color:white" do %>
-        <i class="icon-trash"></i> Destroy
-      <% end %>
-    </div>
-  </li>
-</ul>
+<div class="row">
+  <div class="twelve columns medium danger btn">
+    <%= link_to @snipp, data: { confirm: "Are you sure you want to destroy snipp '#{@snipp.title}'?" }, method: :delete, style: "color:white" do %>
+      <i class="icon-trash"></i> Destroy
+    <% end %>
+  </div>
+</div>
+<br />
 <div class="medium default btn">
   <%= link_to snipps_path do %>
     <i class="icon-left-bold"></i> Back
