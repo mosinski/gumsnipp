@@ -48,6 +48,8 @@ class Snipp < ActiveRecord::Base
       order('created_at DESC').where('title ILIKE ?', "%#{search}%").paginate(page: page, per_page: 9)
     when "development"
       order('created_at DESC').where('title LIKE ?', "%#{search}%").paginate(page: page, per_page: 9)
+    when "test"
+      order('created_at DESC').where('title LIKE ?', "%#{search}%").paginate(page: page, per_page: 9)
     end
   end
 

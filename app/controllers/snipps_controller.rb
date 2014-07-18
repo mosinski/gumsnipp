@@ -8,7 +8,6 @@ class SnippsController < ApplicationController
     if params[:tag]
       @snipps = Snipp.tagged_with(params[:tag]).search(params[:search], params[:page]).where(published: true)
     elsif params[:framework_version]
-      puts "Jestem w Framework Version"
       @snipps = Snipp.search(params[:search], params[:page]).where(framework_version: params[:framework_version])
     else
       @snipps = Snipp.where(published: true).search(params[:search], params[:page])
