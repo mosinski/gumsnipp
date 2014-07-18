@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707212511) do
+ActiveRecord::Schema.define(version: 20140718120436) do
 
   create_table "framework_versions", force: true do |t|
     t.string   "version",    null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140707212511) do
     t.string   "framework_version"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "snipp_version",     default: 1
   end
 
   create_table "taggings", force: true do |t|

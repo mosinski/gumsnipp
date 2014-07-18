@@ -104,6 +104,7 @@ class SnippsController < ApplicationController
     @snipp = Snipp.find(params[:id])
     @snipp.toggle!(:published)
     @snipp.toggle!(:to_check)
+    @snipp.increment!(:snipp_version)
     redirect_to :back, flash: { success: 'Snipp was successfully published.' }
   end
 
