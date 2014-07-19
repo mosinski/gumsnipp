@@ -18,7 +18,7 @@ Homepage:: http://www.gumsnipp.com
 5. Create new Pull Request
 
 == Tests
-Coverage: 62 / 136 LOC (45.59%) covered
+Coverage: 76 / 136 LOC (55.88%) covered
    rake db:test:prepare
    bundle exec rspec
 

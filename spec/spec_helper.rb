@@ -7,7 +7,6 @@ require 'simplecov'
 SimpleCov.start 'rails'
 
 RSpec.configure do |config|
-  config.include Devise::TestHelpers, :type => :controller
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
   config.color_enabled = true
@@ -17,4 +16,6 @@ RSpec.configure do |config|
   config.after :all do
     ActiveRecord::Base.subclasses.each(&:delete_all)
   end
+  config.include Devise::TestHelpers, type: :controller
+  config.include Warden::Test::Helpers
 end
