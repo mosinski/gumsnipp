@@ -1,5 +1,5 @@
 module TagsHelper
   def self.get_tags
-    ActsAsTaggableOn::Tag.all.group("tags.id").select(:name).order("tags.name ASC")
+    ActsAsTaggableOn::Tag.all.group("tags.id").select(:name, :taggings_count).order("tags.taggings_count DESC")
   end
 end

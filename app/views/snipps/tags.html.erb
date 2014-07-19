@@ -1,7 +1,12 @@
 <% @tags.to_a.each_slice(3).with_index do |tags, indeks| %>
   <div class="row">
     <% tags.each do |tag| %>
-      <div class="four columns medium btn" style="background-color:<%= lighten_color("#2C3E50", indeks.to_f/10) %>"><%= link_to tag, tag_path(tag.to_s) %></div>
+      <div class="four columns medium btn tag" style="background-color:<%= lighten_color("#2C3E50", indeks.to_f/10) %>">
+        <%= link_to tag_path(tag.to_s) do %>
+          <%= content_tag(:span, tag.name, class: "pull_left") %>
+          <%= content_tag(:span, tag.taggings_count, class: "pull_right default badge") %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 <% end %>
