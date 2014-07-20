@@ -11,5 +11,5 @@ Devise.setup do |config|
   config.reconfirmable = true
   config.password_length = 8..128
   config.reset_password_within = 6.hours
-  config.sign_out_via = :delete
+  config.sign_out_via = Rails.env.test? ? :get : :delete
 end

@@ -11,8 +11,8 @@ describe "user settings" do
   end
 
   it "should show 'You updated your account successfully.' when valid params" do
-    fill_in "user_nickname",              :with => "Test"
-    fill_in "user_current_password",      :with => @user.password
+    fill_in "user_nickname",              with: "Test"
+    fill_in "user_current_password",      with: @user.password
 
     click_button "Update"
 
@@ -20,7 +20,7 @@ describe "user settings" do
   end
 
   it "should show 'Current password is invalid' when invalid params" do
-    fill_in "user_current_password",      :with => "wrongpassword"
+    fill_in "user_current_password",      with: "wrongpassword"
 
     click_button "Update"
 

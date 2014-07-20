@@ -6,10 +6,10 @@ describe "user registration" do
   end
 
   it "allows new users to register with an nickname, email and password" do
-    fill_in "Nickname",              :with => "user"
-    fill_in "Email",                 :with => "user@example.com"
-    fill_in "Password",              :with => "password"
-    fill_in "Password Confirmation", :with => "password"
+    fill_in "Nickname",              with: "user"
+    fill_in "Email",                 with: "user@example.com"
+    fill_in "Password",              with: "password"
+    fill_in "Password Confirmation", with: "password"
 
     click_button "Sign up"
 
@@ -19,10 +19,10 @@ describe "user registration" do
   it "should show 'Email has already been taken' when submitted with email already in use" do
     User.create(nickname: "taken", email: "taken@example.com", password: "password")
 
-    fill_in "Nickname",              :with => "taken"
-    fill_in "Email",                 :with => "taken@example.com"
-    fill_in "Password",              :with => "password"
-    fill_in "Password Confirmation", :with => "password"
+    fill_in "Nickname",              with: "taken"
+    fill_in "Email",                 with: "taken@example.com"
+    fill_in "Password",              with: "password"
+    fill_in "Password Confirmation", with: "password"
 
     click_button "Sign up"
 

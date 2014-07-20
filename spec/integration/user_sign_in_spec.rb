@@ -7,8 +7,8 @@ describe "user sign in" do
   end
 
   it "allows users to sign with email" do
-    fill_in "user_login", :with => "user@example.com"
-    fill_in "Password", :with => "password"
+    fill_in "user_login",   with: "user@example.com"
+    fill_in "Password",     with: "password"
 
     click_button "Sign in"
 
@@ -16,8 +16,8 @@ describe "user sign in" do
   end
 
   it "allows users to sign with nickname" do
-    fill_in "user_login", :with => "user"
-    fill_in "Password", :with => "password"
+    fill_in "user_login",   with: "user"
+    fill_in "Password",     with: "password"
 
     click_button "Sign in"
 
@@ -25,8 +25,8 @@ describe "user sign in" do
   end
 
   it "should show 'Invalid login or password.' when login with invalid params" do
-    fill_in 'user_login', with: 'user@example.com'
-    fill_in 'Password', with: 'wrongpass'
+    fill_in "user_login",   with: "user@example.com"
+    fill_in "Password",     with: "wrongpass"
 
     click_button "Sign in"
 
