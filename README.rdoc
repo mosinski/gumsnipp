@@ -6,7 +6,7 @@ Homepage:: http://www.gumsnipp.com
 
 == Dependencies
 
-* Ruby 2.1.1p76
+* Ruby 2.1.2p95
 * Rails 4.1.1
 
 == Contributing
