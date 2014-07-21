@@ -1,8 +1,6 @@
 case Rails.env
 
 when "test"
-  puts "********Seeduje Dane na test************"
-
   list_tags = ['user interface', 'admin interface', 'forms', 'buttons', 'table', 'tabs', 'lists', 'modal', 'gallery', 'thumbnails', 'alert', 'registration', 'login', 'menu', 'navbar', 'search', 'footer', 'layouts', 'carousel', 'social', 'calendar', 'badges', 'blog', 'shop', 'chat', 'maps', 'responsive']
   framework_versions = ['2.6.3']
 

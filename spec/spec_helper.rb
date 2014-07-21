@@ -13,6 +13,9 @@ RSpec.configure do |config|
   config.tty = true
   config.formatter = :documentation
   config.include Capybara::DSL
+  config.before :all do
+    Rails.application.load_seed
+  end
   config.after :all do
     ActiveRecord::Base.subclasses.each(&:delete_all)
   end

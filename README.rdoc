@@ -18,9 +18,8 @@ Homepage:: http://www.gumsnipp.com
 5. Create new Pull Request
 
 == Tests
-Coverage: 76 / 136 LOC (55.88%) covered
+Coverage: 108 / 147 LOC (73.47%) covered
    rake db:test:prepare
-   rake db:seed RAILS_ENV=test
    bundle exec rspec
 
 

@@ -3,7 +3,6 @@ require "spec_helper"
 describe "snipp create" do
   before(:all) do
     @user = User.create(nickname: "user", email: "user@example.com", password: "password")
-    load "#{Rails.root}/db/seeds.rb"
   end
 
   before(:each) do
@@ -48,4 +47,14 @@ describe "snipp create" do
 
     page.should have_content("Please only add 3 tags")
   end
+
+  it "should show 'Snipp was successfully created' message when successfull create snipp" do
+    fill_in "Title",              with: "Good Title"
+    select "blog",                from: "snipp_tag_list"
+    fill_in "snipp_html_code",    with: "Good HTML CODE"
+    click_button "Create Snipp"
+
+    page.should have_content("Snipp was successfully created")
+  end
+  
 end
