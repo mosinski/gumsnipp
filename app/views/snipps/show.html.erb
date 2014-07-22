@@ -54,7 +54,9 @@
   <br />
 
   <div class="light label"><i class="icon-eye"></i><%= number_to_human(@snipp.visits_count) %> Views</div>
-  <div class="light label ttip" onclick="location.href='#disqus_thread'" data-tooltip="View comments"><i class="icon-comment"></i>Comments</div>
+  <div class="light label ttip" onclick="location.href='#disqus_thread'" data-tooltip="View comments">
+    <i class="icon-comment"></i><%= link_to "Comments", snipp_url(@snipp, :anchor => "disqus_thread"), :"data-disqus-identifer" => @snipp.id, style: "color: #555" %>
+  </div>
   <div class="pull_right">
     <i class="icon-tag"></i>Tags:
     <%= link_to @snipp.framework_version, snipps_path(framework_version: @snipp.framework_version), class: "primary label" %>
@@ -146,4 +148,14 @@
     var title = escape($(this).attr('title'));
     window.open('http://twitter.com/share?url=' + loc + '&text=' + title + '&', 'twitterwindow', 'height=450, width=550, top='+($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
   });
+</script>
+<script type="text/javascript">
+  var disqus_shortname = '<%= ENV['disqus_shortname'] %>';
+
+  (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
 </script>
