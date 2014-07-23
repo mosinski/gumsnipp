@@ -57,6 +57,14 @@ class Snipp < ActiveRecord::Base
     self.user_id == user.id
   end
 
+  def send_to_verification?
+    self.to_check == false && self.published == false
+  end
+
+  def waiting_for_acceptance?
+    self.to_check == true && self.published == false
+  end
+
   def self.html_tags
     tags = %w(a acronym b strong i em li ul ol h1 h2 h3 h4 h5 h6 hr blockquote br cite sub sup ins p div button textarea input form span select option fieldset legend label img section for table thead tbody tr th td footer script)
   end

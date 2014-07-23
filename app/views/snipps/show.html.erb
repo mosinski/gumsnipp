@@ -5,73 +5,75 @@
   <meta property="og:description" content="Hey check this cool snippet on Gumsnipp.com!" />
 <% end %>
 
-<section class="pill tabs">
-  <div class="title-bar shaded">
-    <%= image_tag(@snipp.user.avatar(60), size: "60", class: "avatar") if @snipp.user %>
-    <div class="name">
-      <h4 class="lead"><%= @snipp.title %></h4>
-      <h5>Gymby <%= @snipp.framework_version %> Snippet by <%= link_to @snipp.user.nickname, user_snipps_path+"/#{@snipp.user.id}" if @snipp.user %></h5>
-    </div>
-    <div class="pull_right social-sharing">
-      Share on:
-      <div class="large metro rounded btn primary">
-        <a href="javascript:fbShare('<%= snipp_url(@snipp) %>', '', '', '', 520, 370)">
-          <i class="icon-facebook"></i>
-        </a>
-      </div>
+<%= render partial: 'steps', locals: {step_label: "Create"} if !@snipp.published %>
 
-      <div class="large metro rounded btn info">
-        <a href="<%= snipp_url(@snipp) %>" class="tweet" target="_blank" title="Hey check this cool snippet - '<%= @snipp.title %>' on Gumsnipp.com!">
-          <i class="icon-twitter"></i>
-        </a>
-      </div>
+<div class="title-bar shaded">
+  <%= image_tag(@snipp.user.avatar(60), size: "60", class: "avatar") if @snipp.user %>
+  <div class="name">
+    <h4 class="lead"><%= @snipp.title %></h4>
+    <h5>Gymby <%= @snipp.framework_version %> Snippet by <%= link_to @snipp.user.nickname, user_snipps_path+"/#{@snipp.user.id}" if @snipp.user %></h5>
+  </div>
+  <div class="pull_right social-sharing">
+    Share on:
+    <div class="large metro rounded btn primary">
+      <a href="javascript:fbShare('<%= snipp_url(@snipp) %>', '', '', '', 520, 370)">
+        <i class="icon-facebook"></i>
+      </a>
+    </div>
+
+    <div class="large metro rounded btn info">
+      <a href="<%= snipp_url(@snipp) %>" class="tweet" target="_blank" title="Hey check this cool snippet - '<%= @snipp.title %>' on Gumsnipp.com!">
+        <i class="icon-twitter"></i>
+      </a>
     </div>
   </div>
+</div>
 
-  <% if current_user %>
-    <% if @snipp.owner?(current_user) %>
-      <ul>
-        <li class="field">
-          <div class="large rounded primary btn twelve columns">
-            <%= link_to 'Edit', edit_snipp_path(@snipp) %>
-          </div>
-        </li>
-      </ul>
-    <% end %>
-    <% if !@snipp.published %>
-      <ul>
-        <li class="field">
-          <div class="large rounded success btn twelve columns">
-            <%= link_to 'Publish', set_public_path+"/#{@snipp.id}" if current_user.admin? && @snipp.to_check? %>
-            <%= link_to 'Send to verification', to_verification_path+"/?id=#{@snipp.id}" if @snipp.owner?(current_user) && !@snipp.to_check? %>
-            <%= 'Waiting for verification' if @snipp.owner?(current_user) && @snipp.to_check? %>
-          </div>
-        </li>
-      </ul>
-    <% end %>
+<% if current_user %>
+  <% if @snipp.owner?(current_user) %>
+    <ul>
+      <li class="field">
+        <div class="large rounded primary btn twelve columns">
+          <%= link_to 'Edit', edit_snipp_path(@snipp) %>
+        </div>
+      </li>
+    </ul>
   <% end %>
+  <% if !@snipp.published %>
+    <ul>
+      <li class="field">
+        <div class="large rounded success btn twelve columns">
+          <%= link_to 'Publish', set_public_path+"/#{@snipp.id}" if current_user.admin? && @snipp.to_check? %>
+          <%= link_to 'Send to verification', to_verification_path+"/?id=#{@snipp.id}" if @snipp.owner?(current_user) && !@snipp.to_check? %>
+          <%= 'Waiting for verification' if @snipp.owner?(current_user) && @snipp.to_check? %>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+<% end %>
 
-  <br />
+<br />
 
-  <div class="light label"><i class="icon-eye"></i><%= number_to_human(@snipp.visits_count) %> Views</div>
-  <div class="light label ttip" onclick="location.href='#disqus_thread'" data-tooltip="View comments">
-    <i class="icon-comment"></i><%= link_to "Comments", snipp_url(@snipp, :anchor => "disqus_thread"), :"data-disqus-identifer" => @snipp.id, style: "color: #555" %>
-  </div>
-  <div class="pull_right">
-    <i class="icon-tag"></i>Tags:
-    <%= link_to @snipp.framework_version, snipps_path(framework_version: @snipp.framework_version), class: "primary label" %>
-    <%= raw @snipp.tag_list.map { |t| link_to t, tag_path(t), class: "primary label" }.join(' ') %>
-  </div>
+<div class="light label"><i class="icon-eye"></i><%= number_to_human(@snipp.visits_count) %> Views</div>
+<div class="light label ttip" onclick="location.href='#disqus_thread'" data-tooltip="View comments">
+  <i class="icon-comment"></i><%= link_to "Comments", snipp_url(@snipp, :anchor => "disqus_thread"), :"data-disqus-identifer" => @snipp.id, style: "color: #555" %>
+</div>
+<div class="pull_right">
+  <i class="icon-tag"></i>Tags:
+  <%= link_to @snipp.framework_version, snipps_path(framework_version: @snipp.framework_version), class: "primary label" %>
+  <%= raw @snipp.tag_list.map { |t| link_to t, tag_path(t), class: "primary label" }.join(' ') %>
+</div>
 
-  <br />
-  <br />
+<br />
+<br />
 
-  <div class="medium pill-left primary btn pull_right">
-    <a href="<%= iframe_url(@snipp.id,@snipp.snipp_version) %>" target="_blank">
-      <i class="icon-resize-full"></i>
-    </a>
-  </div>
+<div class="medium pill-left primary btn pull_right">
+  <a href="<%= iframe_url(@snipp.id,@snipp.snipp_version) %>" target="_blank">
+    <i class="icon-resize-full"></i>
+  </a>
+</div>
 
+<section class="pill tabs">
   <ul class="tab-nav" style="width:250px;">
     <li class="active primary label"><a>Preview</a></li>
     <% if @snipp.html_code.present? %>

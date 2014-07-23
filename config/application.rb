@@ -7,7 +7,7 @@ Bundler.require(*Rails.groups)
 module Gumsnipp
   class Application < Rails::Application
     config.after_initialize do
-      Disqus::defaults[:account] = ENV['disqus_shortname']
+      Disqus::defaults[:account] = 'Gumsnipp'
       Disqus::defaults[:developer] = true
       Disqus::defaults[:container_id] = "disqus_thread"
       Disqus::defaults[:show_powered_by] = false

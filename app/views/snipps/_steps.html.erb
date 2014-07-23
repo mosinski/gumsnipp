@@ -1,0 +1,42 @@
+<div class="row bs-wizard" style="border-bottom:0;">
+  <% if defined?(step_one) %>
+  <div class="four columns bs-wizard-step active">
+  <% else %>
+  <div class="four columns bs-wizard-step complete">
+  <% end %>
+    <div class="text-center bs-wizard-stepnum">Step 1</div>
+    <div class="progress"><div class="progress-bar"></div></div>
+    <a href="#" class="bs-wizard-dot"></a>
+    <div class="bs-wizard-info text-center"><%= step_label %> Snipp</div>
+  </div>
+
+  <% if !defined?(step_one) %>
+    <% if @snipp.send_to_verification? %>
+      <div class="four columns bs-wizard-step active">
+    <% else %>
+      <div class="four columns bs-wizard-step complete">
+    <% end %>
+  <% else %>
+  <div class="four columns bs-wizard-step disabled">
+  <% end %>
+    <div class="text-center bs-wizard-stepnum">Step 2</div>
+    <div class="progress"><div class="progress-bar"></div></div>
+    <a href="#" class="bs-wizard-dot"></a>
+    <div class="bs-wizard-info text-center">Send to verification</div>
+  </div>
+
+  <% if !defined?(step_one) %>
+    <% if @snipp.waiting_for_acceptance? %>
+      <div class="four columns bs-wizard-step active">
+    <% else %>
+      <div class="four columns bs-wizard-step disabled">
+    <% end %>
+  <% else %>
+  <div class="four columns bs-wizard-step disabled">
+  <% end %>
+    <div class="text-center bs-wizard-stepnum">Step 3</div>
+    <div class="progress"><div class="progress-bar"></div></div>
+    <a href="#" class="bs-wizard-dot"></a>
+    <div class="bs-wizard-info text-center">Wait for acceptance</div>
+  </div>
+</div>
