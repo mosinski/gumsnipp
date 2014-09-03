@@ -3,16 +3,15 @@ require "spec_helper"
 describe "snipp show" do
   before(:all) do
     @user = User.create(nickname: "user", email: "user@example.com", password: "password")
-    login_as @user
-    visit "/snipps/new"
+    @snipp = Snipp.create(title: Faker::Name.title, html_code:Faker::Lorem.paragraph(5), css_code: "", js_code: "", user_id: @user.id, framework_version: '2.6.3', tag_list: 'blog' )
+  end
 
-    fill_in "Title",              with: "Good Title"
-    select "blog",                from: "snipp_tag_list"
-    fill_in "snipp_html_code",    with: "Good HTML CODE"
-    click_button "Create Snipp"
+  before(:each) do
+    login_as @user
   end
 
   it "should show 'Edit' and 'Send to verification' links for owner" do
+    visit "/snipps/#{@snipp.id}"
     expect(page).to have_content("Edit")
     expect(page).to have_content("Send to verification")
 
@@ -21,7 +20,7 @@ describe "snipp show" do
   end
 
   it "should show 'Snipp not found' if snipp don't exist" do
-    visit "/snipps/1"
+    visit "/snipps/999999"
 
     expect(page).to have_content("Snipp not found")
   end
