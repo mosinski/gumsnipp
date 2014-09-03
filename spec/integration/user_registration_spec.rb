@@ -13,7 +13,7 @@ describe "user registration" do
 
     click_button "Sign up"
 
-    page.should have_content("Profile")
+    expect(page).to have_content("Profile")
   end
 
   it "should show 'Email has already been taken' when submitted with email already in use" do
@@ -26,12 +26,12 @@ describe "user registration" do
 
     click_button "Sign up"
 
-    page.should have_content("Email has already been taken")
+    expect(page).to have_content("Email has already been taken")
   end
 
   it "should show 'can't be blank' message when trying to create user with empty field(s)" do
     click_button "Sign up"
 
-    page.should have_content("can't be blank")
+    expect(page).to have_content("can't be blank")
   end
 end

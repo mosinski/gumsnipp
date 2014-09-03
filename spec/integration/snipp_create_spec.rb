@@ -14,20 +14,20 @@ describe "snipp create" do
     visit "/users/sign_out"
     visit "/snipps/new"
 
-    page.should have_content("You need to sign in or sign up before continuing.")
+    expect(page).to have_content("You need to sign in or sign up before continuing.")
   end
 
   it "should show 'can't be blank' message when trying to create snipp with empty field(s)" do
     click_button "Create Snipp"
 
-    page.should have_content("can't be blank")
+    expect(page).to have_content("can't be blank")
   end
 
   it "should show 'Title is invalid' message when trying to create snipp with invalid title" do
     fill_in "Title",              with: "wrong title1"
     click_button "Create Snipp"
 
-    page.should have_content("Title is invalid")
+    expect(page).to have_content("Title is invalid")
   end
 
   it "should show 'Please add some tags' message when trying to create snipp without tags" do
@@ -35,7 +35,7 @@ describe "snipp create" do
     fill_in "snipp_html_code",    with: "Good HTML CODE"
     click_button "Create Snipp"
 
-    page.should have_content("Please add some tags")
+    expect(page).to have_content("Please add some tags")
   end
 
   it "should show 'Please only add 3 tags' message when trying to create snipp with more then 3 tags" do
@@ -45,7 +45,7 @@ describe "snipp create" do
     select "menu",                from: "snipp_tag_list"
     click_button "Create Snipp"
 
-    page.should have_content("Please only add 3 tags")
+    expect(page).to have_content("Please only add 3 tags")
   end
 
   it "should show 'Snipp was successfully created' message when successfull create snipp" do
@@ -54,7 +54,6 @@ describe "snipp create" do
     fill_in "snipp_html_code",    with: "Good HTML CODE"
     click_button "Create Snipp"
 
-    page.should have_content("Snipp was successfully created")
+    expect(page).to have_content("Snipp was successfully created")
   end
-  
 end

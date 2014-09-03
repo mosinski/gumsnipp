@@ -13,16 +13,16 @@ describe "snipp show" do
   end
 
   it "should show 'Edit' and 'Send to verification' links for owner" do
-    page.should have_content("Edit")
-    page.should have_content("Send to verification")
+    expect(page).to have_content("Edit")
+    expect(page).to have_content("Send to verification")
 
     click_link "Send to verification"
-    page.should have_content("Waiting for verification")
+    expect(page).to have_content("Waiting for verification")
   end
 
   it "should show 'Snipp not found' if snipp don't exist" do
     visit "/snipps/1"
 
-    page.should have_content("Snipp not found")
+    expect(page).to have_content("Snipp not found")
   end
 end

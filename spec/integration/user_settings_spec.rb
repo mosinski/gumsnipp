@@ -16,7 +16,7 @@ describe "user settings" do
 
     click_button "Update"
 
-    page.should have_content("You updated your account successfully.")
+    expect(page).to have_content("You updated your account successfully.")
   end
 
   it "should show 'Current password is invalid' when invalid params" do
@@ -24,6 +24,6 @@ describe "user settings" do
 
     click_button "Update"
 
-    page.should have_content("Current password is invalid")
+    expect(page).to have_content("Current password is invalid")
   end
 end

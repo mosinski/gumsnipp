@@ -2,7 +2,7 @@
 
 Design elements, playground and code snippets for Gumby HTML/CSS/JS framework
 
-Homepage:: http://www.gumsnipp.com
+Homepage:: http://gumsnipp.com
 
 == Dependencies
 
@@ -18,7 +18,7 @@ Homepage:: http://www.gumsnipp.com
 5. Create new Pull Request
 
 == Tests
-Coverage: 108 / 147 LOC (73.47%) covered
+Coverage: 118 / 151 LOC (78.15%) covered
    rake db:test:prepare
    bundle exec rspec
 
