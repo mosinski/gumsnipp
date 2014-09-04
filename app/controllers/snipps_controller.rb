@@ -1,6 +1,6 @@
 class SnippsController < ApplicationController
-  before_action :set_snipp, only: [:show, :edit, :update, :destroy, :set_public, :to_verification]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :unchecked, :set_public, :to_verification]
+  before_action :set_snipp, only: [:show, :edit, :update, :destroy, :set_public, :to_verification, :like]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :unchecked, :set_public, :to_verification, :like]
   before_action :authorize, only: [:edit, :update, :destroy, :to_verification]
   before_action :administrator, only: [:unchecked, :set_public]
 
@@ -111,6 +111,17 @@ class SnippsController < ApplicationController
     @snipp = Snipp.find(params[:id])
     @snipp.toggle!(:to_check)
     redirect_to :back, flash: { success: 'Snipp was successfully send to verification' }
+  end
+
+  def like
+    @snipp = Snipp.find(params[:id])
+    if current_user.voted_up_on? @snipp
+      current_user.dislikes @snipp
+    else
+      current_user.likes @snipp
+    end
+
+    redirect_to :back
   end
 
   private

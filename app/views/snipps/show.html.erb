@@ -58,6 +58,7 @@
 <div class="light label ttip" onclick="location.href='#disqus_thread'" data-tooltip="View comments">
   <i class="icon-comment"></i><%= link_to "Comments", snipp_url(@snipp, :anchor => "disqus_thread"), :"data-disqus-identifer" => @snipp.id, style: "color: #555" %>
 </div>
+<div class="light label ttip" data-tooltip="Like snipp"><i class="icon-thumbs-up"></i><%= link_to number_to_human(@snipp.get_likes.size)+' Likes', snipp_path + '/like', style: "color: #555" %></div>
 <div class="pull_right">
   <i class="icon-tag"></i>Tags:
   <%= link_to @snipp.framework_version, snipps_path(framework_version: @snipp.framework_version), class: "primary label" %>
@@ -117,7 +118,18 @@
   <div class="row">
     <% @snipps_similar.each do |snipp| %>
       <div class="four columns thumbnail" onclick="location.href='<%= url_for snipp %>'" style="cursor:pointer">
-        <h5><%= link_to snipp.title, snipp %><span style="float:right" class="ttip" data-tooltip="Viewed"><%= number_to_human(snipp.visits_count) %><i class="icon-eye"></i></span></h5>
+        <h5>
+          <%= link_to truncate(snipp.title, length: 20), snipp %>
+          <li class="primary label ttip pull_right" data-tooltip="Gumby version">
+            <%= link_to snipp.framework_version, snipps_path(framework_version: snipp.framework_version) %>
+          </li>
+          <span class="ttip pull_right" data-tooltip="Likes">
+            <%= number_to_human(snipp.get_likes.size) %><i class="icon-thumbs-up"></i>
+          </span>
+          <span class="ttip pull_right" data-tooltip="Viewed">
+            <%= number_to_human(snipp.visits_count) %><i class="icon-eye"></i>
+          </span>
+        </h5>
         <img src="http://api.webthumbnail.org?width=500&height=400&screen=1024&url=<%= iframe_url(snipp.id,snipp.snipp_version) %>" alt="Snipp Screenshot">
       </div>
     <% end %>

@@ -3,6 +3,7 @@ class Snipp < ActiveRecord::Base
   has_one :visit, :as => :visitable
   acts_as_taggable
   acts_as_taggable_on :tags
+  acts_as_votable
 
   FRAMEWORK_VERSIONS = FrameworkHelper.get_versions.collect{|a, b| b}
 

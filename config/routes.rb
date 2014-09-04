@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :snipps do
-    get 'subscreens', :on => :collection
+    get 'subscreens', on: :collection
   end
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   post '/users/upload_avatar' => 'users#upload_avatar'
   get '/ui' => 'static#ui'
@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get '/tags' => 'snipps#tags'
   get 'tags/:tag', to: 'snipps#index', as: :tag
+
+  get '/snipps/:id/like', to: 'snipps#like', as: :id
 
   root to: 'snipps#index'
 end
