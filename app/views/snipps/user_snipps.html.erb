@@ -13,7 +13,7 @@
             <%= number_to_human(snipp.visits_count) %><i class="icon-eye"></i>
           </span>
         </h5>
-        <img src="http://api.webthumbnail.org?width=500&height=400&screen=1024&url=<%= iframe_url(snipp.id,snipp.snipp_version) %>" alt="Snipp Screenshot">
+        <img src="http://free.pagepeeker.com/v2/thumbs.php?size=x&url=<%= iframe_url(snipp.id,snipp.snipp_version) %>" alt="Snipp Screenshot">
         <div class="field">
           <div class="medium primary btn" style="width:100%"><%= link_to "View", snipp %></div>
         </div>
@@ -24,5 +24,5 @@
 <% end %>
 
 <div class="blog-pager" id="blog-pager">
-<%= will_paginate @snipps %>
+  <%= will_paginate @snipps %>
 </div>

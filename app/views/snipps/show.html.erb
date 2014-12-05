@@ -1,5 +1,5 @@
 <% content_for :facebook do %>
-  <meta property="og:image" content="http://immediatenet.com/t/fs?Size=800x600&URL=<%= url_for action: :subscreens, id: @snipp.id, only_path: false %>" />
+  <meta property="og:image" content="http://free.pagepeeker.com/v2/thumbs.php?size=x&url=<%= url_for action: :subscreens, id: @snipp.id, only_path: false %>" />
   <meta property="og:title" content="<%= @snipp.title %>" />
   <meta property="og:url" content="<%= snipp_url(@snipp) %>" />
   <meta property="og:description" content="Hey check this cool snippet on Gumsnipp.com!" />
@@ -130,7 +130,7 @@
             <%= number_to_human(snipp.visits_count) %><i class="icon-eye"></i>
           </span>
         </h5>
-        <img src="http://api.webthumbnail.org?width=500&height=400&screen=1024&url=<%= iframe_url(snipp.id,snipp.snipp_version) %>" alt="Snipp Screenshot">
+        <img src="http://free.pagepeeker.com/v2/thumbs.php?size=x&url=<%= iframe_url(snipp.id,snipp.snipp_version) %>" alt="Snipp Screenshot">
       </div>
     <% end %>
   </div>
