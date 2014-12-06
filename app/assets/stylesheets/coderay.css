@@ -32,7 +32,7 @@ table.CodeRay {
 .CodeRay .pc { color:#6C9CBD }
 table.CodeRay td { padding:0px!important; }
 td.line-numbers { width:20px; -webkit-user-select: none; -moz-user-select: none; user-select: none; }
-td.line-numbers pre { width:40px; font-size:12px; line-height: 1.7; background:#EBEBEB; }
+td.line-numbers pre { width:40px; font-size:12px; line-height: 1.8; background:#EBEBEB; }
 td.line-numbers pre a { padding: 0px 6px 0px 3px; text-align: right; width:100%; float: right; color:black; font-weight:bold; }
 td.line-numbers pre a:hover { background:#DDDDDD; text-decoration:underline; }
 td.code pre{ line-height: 1.7; font-size:12px; white-space: pre-wrap!important; word-wrap: break-word!important; }
