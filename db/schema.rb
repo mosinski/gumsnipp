@@ -13,13 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20140903211833) do
 
-  create_table "framework_versions", force: true do |t|
+  create_table "framework_versions", force: :cascade do |t|
     t.string   "version",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "snipps", force: true do |t|
+  create_table "snipps", force: :cascade do |t|
     t.string   "title"
     t.text     "html_code"
     t.text     "css_code"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140903211833) do
     t.integer  "snipp_version",     default: 1
   end
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
@@ -45,14 +45,14 @@ ActiveRecord::Schema.define(version: 20140903211833) do
 
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "nickname",               default: "",    null: false
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140903211833) do
   add_index "users", ["nickname"], name: "index_users_on_nickname", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  create_table "visit_details", force: true do |t|
+  create_table "visit_details", force: :cascade do |t|
     t.integer  "visit_id"
     t.string   "ip_address", limit: 15
     t.datetime "created_at"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20140903211833) do
   add_index "visit_details", ["ip_address"], name: "index_visit_details_on_ip_address"
   add_index "visit_details", ["visit_id"], name: "index_visit_details_on_visit_id"
 
-  create_table "visits", force: true do |t|
+  create_table "visits", force: :cascade do |t|
     t.integer  "visitable_id"
     t.string   "visitable_type", limit: 30
     t.integer  "total_visits"
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20140903211833) do
   add_index "visits", ["visitable_id"], name: "index_visits_on_visitable_id"
   add_index "visits", ["visitable_type"], name: "index_visits_on_visitable_type"
 
-  create_table "votes", force: true do |t|
+  create_table "votes", force: :cascade do |t|
     t.integer  "votable_id"
     t.string   "votable_type"
     t.integer  "voter_id"

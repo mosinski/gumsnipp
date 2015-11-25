@@ -11,8 +11,14 @@ describe "snipp update" do
     visit "/snipps/#{@snipp.id}/edit"
   end
 
-  it "should show 'Destroy' and 'Update Snipp' links for owner" do
-    expect(page).to have_content("Destroy")
+  it "should show 'You need to sign in or sign up before continuing.' message when trying to update as guest" do
+    visit "/users/sign_out"
+    visit "/snipps/#{@snipp.id}/edit"
+
+    expect(page).to have_content("You need to sign in or sign up before continuing.")
+  end
+  
+  it "should show 'Update Snipp' link for owner" do
     expect(page).to have_content("Update Snipp")
   end
 

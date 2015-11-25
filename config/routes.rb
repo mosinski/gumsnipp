@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   get '/tags' => 'snipps#tags'
   get 'tags/:tag', to: 'snipps#index', as: :tag
 
-  get '/snipps/:id/like', to: 'snipps#like', as: :id
+  get '/snipps/:id/like', to: 'snipps#like', as: :like_snipp
+  get '/snipps/:id/fork', to: 'snipps#make_fork', as: :fork_snipp
 
   root to: 'snipps#index'
 end
