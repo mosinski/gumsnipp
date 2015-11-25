@@ -6,8 +6,8 @@ Homepage:: http://gumsnipp.com
 
 == Dependencies
 
-* Ruby 2.1.2p95
-* Rails 4.1.4
+* Ruby 2.2.3p173
+* Rails 4.2.5
 
 == Contributing
 
@@ -18,11 +18,11 @@ Homepage:: http://gumsnipp.com
 5. Create new Pull Request
 
 == Tests
-Coverage: 118 / 151 LOC (78.15%) covered
+Coverage: 134 / 163 LOC (82.21%) covered
    rake db:test:prepare
    bundle exec rspec
 
 
 == License
 
-License:: Copyright (c) 2014 Miłosz Osiński, released under the MIT license
+License:: Copyright (c) 2015 Miłosz Osiński, released under the MIT license

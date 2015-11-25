@@ -58,7 +58,8 @@
 <div class="light label ttip" onclick="location.href='#disqus_thread'" data-tooltip="View comments">
   <i class="icon-comment"></i><%= link_to "Comments", snipp_url(@snipp, :anchor => "disqus_thread"), :"data-disqus-identifer" => @snipp.id, style: "color: #555" %>
 </div>
-<div class="light label ttip" data-tooltip="Like snipp"><i class="icon-thumbs-up"></i><%= link_to number_to_human(@snipp.get_likes.size)+' Likes', snipp_path + '/like', style: "color: #555" %></div>
+<div class="light label ttip" data-tooltip="Like snipp"><i class="icon-thumbs-up"></i><%= link_to number_to_human(@snipp.get_likes.size)+' Likes', like_snipp_path, style: "color: #555" %></div>
+<div class="light label ttip" data-tooltip="Copy snipp"><i class="icon-flow-branch"></i><%= link_to ' Fork this', fork_snipp_path, style: "color: #555" %></div>
 <div class="pull_right">
   <i class="icon-tag"></i>Tags:
   <%= link_to @snipp.framework_version, snipps_path(framework_version: @snipp.framework_version), class: "primary label" %>

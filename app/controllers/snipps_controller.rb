@@ -1,6 +1,6 @@
 class SnippsController < ApplicationController
-  before_action :set_snipp, only: [:show, :edit, :update, :destroy, :set_public, :to_verification, :like]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :unchecked, :set_public, :to_verification, :like]
+  before_action :set_snipp, only: [:show, :edit, :update, :destroy, :set_public, :to_verification, :like, :make_fork]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :unchecked, :set_public, :to_verification, :like, :make_fork]
   before_action :authorize, only: [:edit, :update, :destroy, :to_verification]
   before_action :administrator, only: [:unchecked, :set_public]
 
@@ -82,7 +82,7 @@ class SnippsController < ApplicationController
   def unchecked
     @snipps = Snipp.where(to_check: true).search(params[:search], params[:page])
 
-    render 'index.html.erb'
+    render :index
   end
 
   def tags
@@ -95,7 +95,7 @@ class SnippsController < ApplicationController
       @snipps = Snipp.where(user_id: @user.id, published: true).search(params[:search], params[:page])
     else
       @snipps = current_user.snipps.search(params[:search], params[:page])
-      render 'snipps/index'
+      render :index
     end
   end
 
@@ -121,7 +121,15 @@ class SnippsController < ApplicationController
       current_user.likes @snipp
     end
 
-    redirect_to :back
+    redirect_to snipp_path(@snipp)
+  end
+
+  def make_fork
+    @snipp = Snipp.find(params[:id]).dup
+    @snipp.published = false
+    @snipp.to_check = false
+    
+    render :new
   end
 
   private
