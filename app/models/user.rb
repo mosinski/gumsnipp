@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.uid = auth.uid
       user.provider = auth.provider
       user.email = auth.info.email
