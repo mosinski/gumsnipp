@@ -6,7 +6,7 @@ Homepage:: http://gumsnipp.com
 
 == Dependencies
 
-* Ruby 2.2.3p173
+* Ruby 2.3.1p112
 * Rails 4.2.5
 
 == Contributing
@@ -17,7 +17,7 @@ Homepage:: http://gumsnipp.com
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-== Tests
+== Tests {<img src="https://travis-ci.org/mosinski/gumsnipp.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/mosinski/gumsnipp]
 Coverage: 134 / 163 LOC (82.21%) covered
    rake db:test:prepare
    bundle exec rspec
